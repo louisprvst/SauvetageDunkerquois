@@ -1,8 +1,3 @@
-<?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-?>
-
 <!DOCTYPE html>
 
 <html lang="fr-FR">
@@ -45,45 +40,73 @@ error_reporting(E_ALL);
         </div>
 
 
-        <form action="inc/recherche.php" method="get">
-          <input type="text" name="search" placeholder="Rechercher...">
-          <button type="submit">Rechercher</button>
+
+        <h1>Recherche de Bateaux</h1>
+
+
+        <form method="post">
+          <label>
+            <input type="radio" name="choix" value="Par matricule"> Choix A
+          </label>
+          <label>
+            <input type="radio" name="choix" value="Par nom"> Choix B
+          </label>
+          <label>
+            <input type="radio" name="choix" value="Par type"> Choix C
+          </label>
+          <label>
+            <input type="radio" name="choix" value="Par pays"> Choix C
+          </label>
+          <label>
+            <input type="radio" name="choix" value="Par ville"> Choix C
+          </label>
+          <br><br>
+          <input type="text" name="search" placeholder="Nom du bateau" required>
+            <button type="submit">Rechercher</button>
         </form>
 
-        <?php foreach ($resultats as $resultat): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($resultat['id']); ?></td>
-                <td><?php echo htmlspecialchars($resultat['nom']); ?></td>
-                <td><?php echo htmlspecialchars($resultat['groupe']); ?></td>
-                <td><?php echo htmlspecialchars($resultat['prof']); ?></td>
-                <td><?php echo htmlspecialchars($resultat['resultat']); ?></td>
-                <td>
-                <form action="inc/recherche.php" method="get">
-                  <input type="text" name="search" placeholder="Rechercher...">
-                  <button type="submit">Rechercher</button>
-                </form>
-                </td>
-            </tr>
-          <?php endforeach; ?>
+          <?php
 
-        <div id="c36556" class="frame frame-size-default frame-default frame-type-textpic frame-layout-default frame-background-none frame-no-backgroundimage frame-space-before-none frame-space-after-none" >
-          <div class="frame-group-container">
-            <div class="frame-group-inner">
-              <div class="frame-container frame-container-default">
-                <div class="frame-inner">
-                  <div class="textpic textpic-above">
-                    <div class="textpic-item textpic-gallery"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            require_once __DIR__ . '/class/rechercheBateau.php';
+
+            if (isset($_POST['search'])) {
+              $resultats = rechercheGeneral($_POST['search']);
+
+          ?>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Matricule</th>
+                  <th>Nom</th>
+                  <th>Type</th>
+                  <th>Pays</th>
+                  <th>Ville</th>
+                  <th>Gabarit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  foreach ($resultats as $resultat) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($resultat['bat_matricule']) . "</td>";
+                    echo "<td>" . htmlspecialchars($resultat['bat_nom']) . "</td>";
+                    echo "<td>" . htmlspecialchars($resultat['bat_type']) . "</td>";
+                    echo "<td>" . htmlspecialchars($resultat['bat_pays']) . "</td>";
+                    echo "<td>" . htmlspecialchars($resultat['bat_ville']) . "</td>";
+                    echo "<td>" . htmlspecialchars($resultat['bat_gabarit']) . "</td>";
+                    echo "</tr>";
+                  }
+                }
+                ?>
+              </tbody>
+            </table>
+
+
 
 
     <?php include './inc/footer.inc.php' ; ?>
 
   </body>
-
+  
 </html>
