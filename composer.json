@@ -1,0 +1,13 @@
+{
+    "name": "louis/sauvetage",
+    "description": "Site web pour rendre accessible la base de données sur les sauvetages en mer",
+    "authors": [
+        {
+            "name": "louisprvst",
+            "email": "prevost.louis1610@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
