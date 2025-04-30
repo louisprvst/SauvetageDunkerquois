@@ -21,7 +21,6 @@
 
     <?php include './inc/header.inc.php' ; ?>
 
-
     <div id="page-content" class="bp-page-content main-section" role="main">
         <div id="c36555" class="frame frame-size-default frame-default frame-type-header frame-layout-default frame-background-primary frame-no-backgroundimage frame-space-before-none frame-space-after-none">
           <div class="frame-group-container">
@@ -40,67 +39,57 @@
         </div>
 
 
-
         <h1>Recherche de Bateaux</h1>
 
+        <?php
+          $matricule = $_POST['bat_matricule'] ?? '';
+          $nom = $_POST['bat_nom'] ?? '';
+          $type = $_POST['bat_type'] ?? '';
+          $pays = $_POST['bat_pays'] ?? '';
+          $ville = $_POST['bat_ville'] ?? '';
+          $gabarit = $_POST['bat_gabarit'] ?? '';
+
+          require_once __DIR__ . '/class/rechercheBateau.php';
+          $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
+        ?>
 
         <form method="post">
-          <label>
-            <input type="radio" name="choix" value="Par matricule"> Choix A
-          </label>
-          <label>
-            <input type="radio" name="choix" value="Par nom"> Choix B
-          </label>
-          <label>
-            <input type="radio" name="choix" value="Par type"> Choix C
-          </label>
-          <label>
-            <input type="radio" name="choix" value="Par pays"> Choix C
-          </label>
-          <label>
-            <input type="radio" name="choix" value="Par ville"> Choix C
-          </label>
-          <br><br>
-          <input type="text" name="search" placeholder="Nom du bateau" required>
-            <button type="submit">Rechercher</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Matricule</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Pays</th>
+                <th>Ville</th>
+                <th>Gabarit</th>
+              </tr>
+              <tr>
+                <td><input type="text" name="bat_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
+                <td><input type="text" name="bat_nom" value="<?= htmlspecialchars($nom) ?>"></td>
+                <td><input type="text" name="bat_type" value="<?= htmlspecialchars($type) ?>"></td>
+                <td><input type="text" name="bat_pays" value="<?= htmlspecialchars($pays) ?>"></td>
+                <td><input type="text" name="bat_ville" value="<?= htmlspecialchars($ville) ?>"></td>
+                <td><input type="text" name="bat_gabarit" value="<?= htmlspecialchars($gabarit) ?>"></td>
+                <td><button type="submit">Rechercher</button></td>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if (!empty($resultats)) : ?>
+                <?php foreach ($resultats as $resultat): ?>
+                  <tr>
+                    <td><?= htmlspecialchars($resultat['bat_matricule']) ?></td>
+                    <td><?= htmlspecialchars($resultat['bat_nom']) ?></td>
+                    <td><?= htmlspecialchars($resultat['bat_type']) ?></td>
+                    <td><?= htmlspecialchars($resultat['bat_pays']) ?></td>
+                    <td><?= htmlspecialchars($resultat['bat_ville']) ?></td>
+                    <td><?= htmlspecialchars($resultat['bat_gabarit']) ?></td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </tbody>
+          </table>
         </form>
-
-          <?php
-
-            require_once __DIR__ . '/class/rechercheBateau.php';
-
-            if (isset($_POST['search'])) {
-              $resultats = rechercheGeneral($_POST['search']);
-
-          ?>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Matricule</th>
-                  <th>Nom</th>
-                  <th>Type</th>
-                  <th>Pays</th>
-                  <th>Ville</th>
-                  <th>Gabarit</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                  foreach ($resultats as $resultat) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($resultat['bat_matricule']) . "</td>";
-                    echo "<td>" . htmlspecialchars($resultat['bat_nom']) . "</td>";
-                    echo "<td>" . htmlspecialchars($resultat['bat_type']) . "</td>";
-                    echo "<td>" . htmlspecialchars($resultat['bat_pays']) . "</td>";
-                    echo "<td>" . htmlspecialchars($resultat['bat_ville']) . "</td>";
-                    echo "<td>" . htmlspecialchars($resultat['bat_gabarit']) . "</td>";
-                    echo "</tr>";
-                  }
-                }
-                ?>
-              </tbody>
-            </table>
 
 
 
