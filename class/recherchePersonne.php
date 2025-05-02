@@ -1,0 +1,71 @@
+<?php
+
+function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers_prenomun, string $pers_nationalite, string $pers_naissance, string $pers_lieu_nai, string $pers_metier) {
+
+    $pdo = require_once __DIR__ . '/../lib/mypdo.php';
+
+    $sql = "SELECT * FROM Personne WHERE 1 = 1" ;
+
+    $params = [];
+
+    if (!empty($pers_matricule)) {
+        $sql .= " AND pers_matricule LIKE :matricule";
+        $params[':matricule'] = "%$pers_matricule%";
+    }
+
+    if (!empty($pers_nom)) {
+        $sql .= " AND pers_nom LIKE :nom";
+        $params[':nom'] = "%$pers_nom%";
+    }
+
+    if (!empty($pers_prenomun)) {
+        $sql .= " AND pers_prenom1 LIKE :prenomun";
+        $params[':prenomun'] = "%$pers_prenomun%";
+    }
+
+    if (!empty($pers_prenomdeux)) {
+        $sql .= " AND pers_prenom2 LIKE :prenomdeux";
+        $params[':prenomdeux'] = "%$pers_prenomdeux%";
+    }
+
+    if (!empty($pers_prenomtrois)) {
+        $sql .= " AND pers_prenom3 LIKE :prenomtrois";
+        $params[':prenomtrois'] = "%$pers_prenomtrois%";
+    }
+
+    if (!empty($pers_sexe)) {
+        $sql .= " AND pers_sexe LIKE :sexe";
+        $params[':sexe'] = "%$pers_sexe%";
+    }
+
+    if (!empty($pers_nationalite)) {
+        $sql .= " AND pers_nationalite LIKE :nationalite";
+        $params[':nationalite'] = "%$pers_nationalite%";
+    }
+
+    if (!empty($pers_naissance)) {
+        $sql .= " AND pers_ddn LIKE :naissance";
+        $params[':naissance'] = "%$pers_naissance%";
+    }
+
+    if (!empty($pers_lieu_nai)) {
+        $sql .= " AND pers_lieu_naissance LIKE :lieu_nai";
+        $params[':lieu_nai'] = "%$pers_lieu_nai%";
+    }
+
+    if (!empty($pers_metier)) {
+        $sql .= " AND pers_metier LIKE :metier";
+        $params[':metier'] = "%$pers_metier%";
+    }
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($resultats)) {
+        echo "Aucun résultat trouvé.";
+    } 
+    else {
+        return $resultats ;
+    }
+}

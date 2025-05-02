@@ -40,7 +40,7 @@ function rechercheGeneral(string $bat_matricule, string $bat_nom, string $bat_ty
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
-    $resultats = $stmt->fetchAll();
+    $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (empty($resultats)) {
         echo "Aucun résultat trouvé.";

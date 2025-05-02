@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
+?>  
+
 <!DOCTYPE html>
 
 <html lang="fr-FR">
@@ -38,19 +45,34 @@
           </div>
         </div>
 
+        <?php $choix = $_SESSION['choix'] ?? null; ?>
+
+        <form method="post">
+          <label> 
+              <input type="radio" name="choix" value="bateau" <?php if ($choix === 'bateau') echo 'checked'; ?>> Effectuer une recherche sur les bateaux 
+          </label>
+
+          <label>
+              <input type="radio" name="choix" value="personne" <?php if ($choix === 'personne') echo 'checked'; ?>> Effectuer une recherche sur les personnes
+          </label>
+
+          <button type="submit">Envoyer</button>
+        </form>
+
+
         <?php
-          $matricule = $_POST['bat_matricule'] ?? '';
-          $nom = $_POST['bat_nom'] ?? '';
-          $type = $_POST['bat_type'] ?? '';
-          $pays = $_POST['bat_pays'] ?? '';
-          $ville = $_POST['bat_ville'] ?? '';
-          $gabarit = $_POST['bat_gabarit'] ?? '';
-
-          require_once __DIR__ . '/class/rechercheBateau.php';
-          $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $choix = $_POST['choix'] ?? $_SESSION['choix'] ?? null;
+            $_SESSION['choix'] = $choix;
+          }
+          
+          if($_SESSION['choix'] === 'bateau') {
+            include './inc/rechercheBateau.php';
+          } 
+          elseif($_SESSION['choix'] === 'personne') {
+            include './inc/recherchePersonne.php';
+          }
         ?>
-
-      <?php include './inc/searchbateau.php' ; ?>
 
     <?php include './inc/footer.inc.php' ; ?>
 
