@@ -38,9 +38,6 @@
           </div>
         </div>
 
-
-        <h1>Recherche de Bateaux</h1>
-
         <?php
           $matricule = $_POST['bat_matricule'] ?? '';
           $nom = $_POST['bat_nom'] ?? '';
@@ -53,46 +50,7 @@
           $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
         ?>
 
-        <form method="post">
-          <table>
-            <thead>
-              <tr>
-                <th>Matricule</th>
-                <th>Nom</th>
-                <th>Type</th>
-                <th>Pays</th>
-                <th>Ville</th>
-                <th>Gabarit</th>
-              </tr>
-              <tr>
-                <td><input type="text" name="bat_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
-                <td><input type="text" name="bat_nom" value="<?= htmlspecialchars($nom) ?>"></td>
-                <td><input type="text" name="bat_type" value="<?= htmlspecialchars($type) ?>"></td>
-                <td><input type="text" name="bat_pays" value="<?= htmlspecialchars($pays) ?>"></td>
-                <td><input type="text" name="bat_ville" value="<?= htmlspecialchars($ville) ?>"></td>
-                <td><input type="text" name="bat_gabarit" value="<?= htmlspecialchars($gabarit) ?>"></td>
-                <td><button type="submit">Rechercher</button></td>
-              </tr>
-            </thead>
-            <tbody>
-              <?php if (!empty($resultats)) : ?>
-                <?php foreach ($resultats as $resultat): ?>
-                  <tr>
-                    <td><?= htmlspecialchars($resultat['bat_matricule']) ?></td>
-                    <td><?= htmlspecialchars($resultat['bat_nom']) ?></td>
-                    <td><?= htmlspecialchars($resultat['bat_type']) ?></td>
-                    <td><?= htmlspecialchars($resultat['bat_pays']) ?></td>
-                    <td><?= htmlspecialchars($resultat['bat_ville']) ?></td>
-                    <td><?= htmlspecialchars($resultat['bat_gabarit']) ?></td>
-                  </tr>
-                <?php endforeach; ?>
-              <?php endif; ?>
-            </tbody>
-          </table>
-        </form>
-
-
-
+      <?php include './inc/searchbateau.php' ; ?>
 
     <?php include './inc/footer.inc.php' ; ?>
 
