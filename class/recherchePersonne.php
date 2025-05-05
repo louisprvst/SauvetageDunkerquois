@@ -62,10 +62,7 @@ function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers
     $stmt->execute($params);
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if (empty($resultats)) {
-        echo "Aucun résultat trouvé.";
-    } 
-    else {
+    if (!empty($resultats)) {
         return $resultats ;
-    }
+    } 
 }

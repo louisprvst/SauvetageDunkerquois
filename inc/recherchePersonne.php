@@ -13,6 +13,8 @@
 
 <div style="text-align: center; margin-top: 20px;">
   <button type="submit" form="personne" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Rechercher</button>
+
+  <button type="button" onclick="window.location.href=window.location.pathname" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin: 5px;"> Réinitialiser </button>
 </div>
 
 <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">

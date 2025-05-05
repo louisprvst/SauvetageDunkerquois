@@ -11,7 +11,9 @@
 ?>
  
 <div style="text-align: center; margin-top: 20px;">
-  <button type="submit" form="bateau" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Rechercher</button>
+  <button type="submit" form="bateau" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin: 5px;">Rechercher</button>
+
+  <button type="button" onclick="window.location.href=window.location.pathname" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin: 5px;"> Réinitialiser </button>
 </div>
 
 <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -42,12 +44,12 @@
         <?php if (!empty($resultats)) : ?>
           <?php foreach ($resultats as $resultat): ?>
             <tr>
-              <td><?= htmlspecialchars($resultat['bat_matricule']?? '') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_nom']?? '') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_type']?? '') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_pays']?? '') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_ville']?? '') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_gabarit']?? '') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_matricule']?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_nom']?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_type']?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_pays']?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_ville']?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_gabarit']?? 'x') ?></td>
             </tr>
           <?php endforeach; ?>
         <?php endif; ?>
