@@ -11,44 +11,47 @@
   $resultats = rechercheGeneral($matricule, $nom, $prenomun, $nationalite, $naissance, $lieu_nai, $metier);
 ?>
 
+<div style="text-align: center; margin-top: 20px;">
+  <button type="submit" form="personne" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Rechercher</button>
+</div>
+
 <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 
   <h2 style="text-align: center;">Recherche de Personnes</h2>
 
-  <form method="post">
+  <form method="post" id="personne">
     <table style="width: 100%; margin-top: 1rem;">
       <thead>
-        <tr> <td><button type="submit" >Rechercher</button></td> </tr>
         <tr>
-            <th>Matricule</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Nationalite</th>
-            <th>Date de Naissance</th>
-            <th>Lieu de Naissance</th>
-            <th>Métier</th> 
+          <th>Matricule</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Nationalite</th>
+          <th>Date de Naissance</th>
+          <th>Lieu de Naissance</th>
+          <th>Métier</th> 
         </tr>
         <tr>
-            <td><input type="text" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
-            <td><input type="text" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
-            <td><input type="text" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>
-            <td><input type="text" name="pers_nationalite" value="<?= htmlspecialchars($nationalite) ?>"></td>
-            <td><input type="text" name="pers_naissance" value="<?= htmlspecialchars($naissance) ?>"></td>
-            <td><input type="text" name="pers_lieu_nai" value="<?= htmlspecialchars($lieu_nai) ?>"></td>
-            <td><input type="text" name="pers_metier" value="<?= htmlspecialchars($metier) ?>"></td>
+          <td><input type="text" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
+          <td><input type="text" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
+          <td><input type="text" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>
+          <td><input type="text" name="pers_nationalite" value="<?= htmlspecialchars($nationalite) ?>"></td>
+          <td><input type="text" name="pers_naissance" value="<?= htmlspecialchars($naissance) ?>"></td>
+          <td><input type="text" name="pers_lieu_nai" value="<?= htmlspecialchars($lieu_nai) ?>"></td>
+          <td><input type="text" name="pers_metier" value="<?= htmlspecialchars($metier) ?>"></td> 
         </tr>
       </thead>
       <tbody>
         <?php if (!empty($resultats)) : ?>
           <?php foreach ($resultats as $resultat): ?>
             <tr>
-                <td><?= htmlspecialchars($resultat['pers_matricule'] ?? '') ?></td>
-                <td><?= htmlspecialchars($resultat['pers_nom'] ?? '') ?></td>
-                <td><?= htmlspecialchars($resultat['pers_prenom1'] ?? '') ?></td>
-                <td><?= htmlspecialchars($resultat['pers_nationalite'] ?? '') ?></td>
-                <td><?= htmlspecialchars($resultat['pers_ddn'] ?? '') ?></td>
-                <td><?= htmlspecialchars($resultat['pers_lieu_naissance'] ?? '') ?></td>
-                <td><?= htmlspecialchars($resultat['pers_metier'] ?? '') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_matricule'] ?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_nom'] ?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_prenom1'] ?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_nationalite'] ?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_ddn'] ?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_lieu_naissance'] ?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['pers_metier'] ?? 'x') ?></td>
             </tr>
           <?php endforeach; ?>
         <?php endif; ?>

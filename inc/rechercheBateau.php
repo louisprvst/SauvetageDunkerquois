@@ -9,12 +9,16 @@
   require_once __DIR__ . '/../class/rechercheBateau.php';
   $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
 ?>
+ 
+<div style="text-align: center; margin-top: 20px;">
+  <button type="submit" form="bateau" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Rechercher</button>
+</div>
 
 <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 
   <h2 style="text-align: center;">Recherche de Bateaux</h2>
 
-  <form method="post">
+  <form method="post" id="bateau">
     <table style="width: 100%; margin-top: 1rem;">
       <thead>
         <tr>
@@ -32,7 +36,6 @@
           <td><input type="text" name="bat_pays" value="<?= htmlspecialchars($pays) ?>"></td>
           <td><input type="text" name="bat_ville" value="<?= htmlspecialchars($ville) ?>"></td>
           <td><input type="text" name="bat_gabarit" value="<?= htmlspecialchars($gabarit) ?>"></td>
-          <td><button type="submit">Rechercher</button></td>
         </tr>
       </thead>
       <tbody>

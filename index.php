@@ -47,18 +47,17 @@
 
         <?php $choix = $_SESSION['choix'] ?? null; ?>
 
-        <form method="post">
-          <label> 
-              <input type="radio" name="choix" value="bateau" <?php if ($choix === 'bateau') echo 'checked'; ?>> Effectuer une recherche sur les bateaux 
-          </label>
+        <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <form method="post" style="text-align: center;">
+            <label> 
+                <input type="radio" name="choix" value="bateau" onchange="this.form.submit()"> Effectuer une recherche sur les bateaux 
+            </label>
 
-          <label>
-              <input type="radio" name="choix" value="personne" <?php if ($choix === 'personne') echo 'checked'; ?>> Effectuer une recherche sur les personnes
-          </label>
-
-          <button type="submit">Envoyer</button>
-        </form>
-
+            <label>
+                <input type="radio" name="choix" value="personne" onchange="this.form.submit()"> Effectuer une recherche sur les personnes
+            </label>
+          </form>
+        </div>
 
         <?php
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
