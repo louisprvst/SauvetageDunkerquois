@@ -51,40 +51,40 @@
                                       data-variant="default"
                                       data-maxwidth="1900"
                                       media="(min-width: 1400px)"
-                                      srcset="./img/logo-cmua-blanc.png 1x"
+                                      srcset="/img/logo-cmua-blanc.png 1x"
                                     />
                                     <source
                                       data-variant="xlarge"
                                       data-maxwidth="1400"
                                       media="(min-width: 1200px)"
-                                      srcset="./img/logo-cmua-blanc.png 1x"
+                                      srcset="/img/logo-cmua-blanc.png 1x"
                                     />
                                     <source
                                       data-variant="large"
                                       data-maxwidth="1200"
                                       media="(min-width: 992px)"
-                                      srcset="./img/logo-cmua-blanc.png 1x"
+                                      srcset="/img/logo-cmua-blanc.png 1x"
                                     />
                                     <source
                                       data-variant="medium"
                                       data-maxwidth="992"
                                       media="(min-width: 768px)"
-                                      srcset="./img/logo-cmua-blanc.png 1x"
+                                      srcset="/img/logo-cmua-blanc.png 1x"
                                     />
                                     <source
                                       data-variant="small"
                                       data-maxwidth="768"
                                       media="(min-width: 576px)"
-                                      srcset="./img/logo-cmua-blanc.png 1x"
+                                      srcset="/img/logo-cmua-blanc.png 1x"
                                     />
                                     <source
                                       data-variant="extrasmall"
                                       data-maxwidth="768"
-                                      srcset="./img/logo-cmua-blanc.png 1x"
+                                      srcset="/img/logo-cmua-blanc.png 1x"
                                     />
                                     <img
                                       loading="lazy"
-                                      src="./img/logo-cmua-blanc.png 1x"
+                                      src="/img/logo-cmua-blanc.png 1x"
                                       width="1900"
                                       height="627"
                                       intrinsicsize="1900x627"
@@ -178,40 +178,40 @@
                                     data-variant="default"
                                     data-maxwidth="946"
                                     media="(min-width: 1400px)"
-                                    srcset="./img/logo_CUD-blanc.png 1x"
+                                    srcset="/img/logo_CUD-blanc.png 1x"
                                   />
                                   <source
                                     data-variant="xlarge"
                                     data-maxwidth="696"
                                     media="(min-width: 1200px)"
-                                    srcset="./img/logo_CUD-blanc.png 1x"
+                                    srcset="/img/logo_CUD-blanc.png 1x"
                                   />
                                   <source
                                     data-variant="large"
                                     data-maxwidth="596"
                                     media="(min-width: 992px)"
-                                    srcset="./img/logo_CUD-blanc.png 1x"
+                                    srcset="/img/logo_CUD-blanc.png 1x"
                                   />
                                   <source
                                     data-variant="medium"
                                     data-maxwidth="492"
                                     media="(min-width: 768px)"
-                                    srcset="./img/logo_CUD-blanc.png 1x"
+                                    srcset="/img/logo_CUD-blanc.png 1x"
                                   />
                                   <source
                                     data-variant="small"
                                     data-maxwidth="380"
                                     media="(min-width: 576px)"
-                                    srcset="./img/logo_CUD-blanc.png 1x"
+                                    srcset="/img/logo_CUD-blanc.png 1x"
                                   />
                                   <source
                                     data-variant="extrasmall"
                                     data-maxwidth="380"
-                                    srcset="./img/logo_CUD-blanc.png 1x"
+                                    srcset="/img/logo_CUD-blanc.png 1x"
                                   />
                                   <img
                                     loading="lazy"
-                                    src="./img/logo_CUD-blanc.png 1x"
+                                    src="/img/logo_CUD-blanc.png 1x"
                                     width="946"
                                     height="337"
                                     intrinsicsize="946x337"
@@ -230,40 +230,40 @@
                                     data-variant="default"
                                     data-maxwidth="946"
                                     media="(min-width: 1400px)"
-                                    srcset="./img/logo-vdk.png 1x"
+                                    srcset="/img/logo-vdk.png 1x"
                                   />
                                   <source
                                     data-variant="xlarge"
                                     data-maxwidth="696"
                                     media="(min-width: 1200px)"
-                                    srcset="./img/logo-vdk.png 1x"
+                                    srcset="/img/logo-vdk.png 1x"
                                   />
                                   <source
                                     data-variant="large"
                                     data-maxwidth="596"
                                     media="(min-width: 992px)"
-                                    srcset="./img/logo-vdk.png 1x"
+                                    srcset="/img/logo-vdk.png 1x"
                                   />
                                   <source
                                     data-variant="medium"
                                     data-maxwidth="492"
                                     media="(min-width: 768px)"
-                                    srcset="./img/logo-vdk.png 1x"
+                                    srcset="/img/logo-vdk.png 1x"
                                   />
                                   <source
                                     data-variant="small"
                                     data-maxwidth="380"
                                     media="(min-width: 576px)"
-                                    srcset="./img/logo-vdk.png 1x"
+                                    srcset="/img/logo-vdk.png 1x"
                                   />
                                   <source
                                     data-variant="extrasmall"
                                     data-maxwidth="380"
-                                    srcset="./img/logo-vdk.png 1x"
+                                    srcset="/img/logo-vdk.png 1x"
                                   />
                                   <img
                                     loading="lazy"
-                                    src="./img/logo-vdk.png 1x"
+                                    src="/img/logo-vdk.png 1x"
                                     width="946"
                                     height="238"
                                     intrinsicsize="946x238"

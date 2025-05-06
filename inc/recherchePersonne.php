@@ -11,13 +11,15 @@
   $resultats = rechercheGeneral($matricule, $nom, $prenomun, $nationalite, $naissance, $lieu_nai, $metier);
 ?>
 
-<div style="text-align: center; margin-top: 20px;">
-  <button type="submit" form="personne" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Rechercher</button>
+<link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
 
-  <button type="button" onclick="window.location.href=window.location.pathname" style="background-color: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin: 5px;"> Réinitialiser </button>
+<div style="text-align: center; margin-top: 20px;">
+  <button type="submit" form="personne" class="bluebutton">Rechercher</button>
+
+  <button type="button" onclick="window.location.href=window.location.pathname" class="bluebutton"margin: 5px;"> Réinitialiser </button>
 </div>
 
-<div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<div class="bluecase">
 
   <h2 style="text-align: center;">Recherche de Personnes</h2>
 
@@ -47,7 +49,11 @@
         <?php if (!empty($resultats)) : ?>
           <?php foreach ($resultats as $resultat): ?>
             <tr>
-              <td><?= htmlspecialchars($resultat['pers_matricule'] ?? 'x') ?></td>
+              <td>
+                <a href="inc/detailsPersonne.php?matricule=<?= urlencode($resultat['pers_matricule']) ?>">
+                  <?= htmlspecialchars($resultat['pers_matricule']) ?>
+                </a>
+              </td>
               <td><?= htmlspecialchars($resultat['pers_nom'] ?? 'x') ?></td>
               <td><?= htmlspecialchars($resultat['pers_prenom1'] ?? 'x') ?></td>
               <td><?= htmlspecialchars($resultat['pers_nationalite'] ?? 'x') ?></td>

@@ -137,7 +137,7 @@
                       class="btn btn-sm btn-primary"
                       ><span>Venir</span
                       ><img
-                        src="./img/exit-door-log-out.1.svg"
+                        src="/img/exit-door-log-out.1.svg"
                         width="24"
                         height="24"
                         alt=""
@@ -162,7 +162,7 @@
             href="https://archives-dunkerque.fr/"
             ><img
               class="navbar-brand-logo-normal"
-              src="./img/logo-cmua-blanc.png"
+              src="/img/logo-cmua-blanc.png"
               alt="CMUA (Centre de la Mémoire Urbaine d&#39;Agglomération) - Archives de Dunkerque"
               height="65"
               width="180" /><img
@@ -172,7 +172,7 @@
               height="65"
               width="180" /><img
               class="navbar-brand-logo-mobile"
-              src="./img/logo-cmua-blanc-mobile.png"
+              src="/img/logo-cmua-blanc-mobile.png"
               alt="CMUA (Centre de la Mémoire Urbaine d&#39;Agglomération) - Archives de Dunkerque"
               height="80"
               width="180"
@@ -186,7 +186,7 @@
                     title="Venir"
                     ><span>Venir</span
                     ><img
-                      src="./img/exit-door-log-out.1.svg"
+                      src="/img/exit-door-log-out.1.svg"
                       width="24"
                       height="24"
                       alt=""

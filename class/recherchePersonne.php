@@ -66,3 +66,36 @@ function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers
         return $resultats ;
     } 
 }
+
+
+function rechercheParMatricule(string $matricule) {
+    $pdo = require_once __DIR__ . '/../lib/mypdo.php';
+
+    $sql = "SELECT pers.* , fonc.fonction_sauvetage_description FROM Personne AS pers 
+            LEFT JOIN Fonction_sauvetage AS fonc ON pers.pers_fonction_sauvetage_matricule = fonc.fonction_sauvetage_matricule 
+            WHERE pers.pers_matricule = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $matricule]);
+    $resultats_pers = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+    $sql = "SELECT deces.* , pers.pers_matricule FROM Deces AS deces 
+            JOIN Personne AS pers ON deces.pers_matricule = pers.pers_matricule 
+            WHERE deces.pers_matricule = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $matricule]);
+
+    $resultats_deces = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $resultats = [
+        'personne' => $resultats_pers,
+        'deces' => $resultats_deces
+    ];
+
+    if (!empty($resultats)) {
+        return $resultats ;
+    }
+}
