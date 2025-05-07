@@ -22,6 +22,8 @@
 
   <h2 style="text-align: center;">Recherche de Bateaux</h2>
 
+  <p class="tips">Cliquez sur matricule pour plus d'informations</p>
+
   <form method="post" id="bateau">
     <table style="width: 100%; margin-top: 1rem;">
       <thead>
@@ -34,12 +36,12 @@
           <th>Gabarit</th>
         </tr>
         <tr>
-          <td><input type="text" name="bat_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
-          <td><input type="text" name="bat_nom" value="<?= htmlspecialchars($nom) ?>"></td>
-          <td><input type="text" name="bat_type" value="<?= htmlspecialchars($type) ?>"></td>
-          <td><input type="text" name="bat_pays" value="<?= htmlspecialchars($pays) ?>"></td>
-          <td><input type="text" name="bat_ville" value="<?= htmlspecialchars($ville) ?>"></td>
-          <td><input type="text" name="bat_gabarit" value="<?= htmlspecialchars($gabarit) ?>"></td>
+          <td><input type="text" placeholder="Recherche par matricule" name="bat_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
+          <td><input type="text" placeholder="Recherche par nom" name="bat_nom" value="<?= htmlspecialchars($nom) ?>"></td>
+          <td><input type="text" placeholder="Recherche par type" name="bat_type" value="<?= htmlspecialchars($type) ?>"></td>
+          <td><input type="text" placeholder="Recherche par pays" name="bat_pays" value="<?= htmlspecialchars($pays) ?>"></td>
+          <td><input type="text" placeholder="Recherche par ville" name="bat_ville" value="<?= htmlspecialchars($ville) ?>"></td>
+          <td><input type="text" placeholder="Recherche par gabarit" name="bat_gabarit" value="<?= htmlspecialchars($gabarit) ?>"></td>
         </tr>
       </thead>
       <tbody>
@@ -47,11 +49,11 @@
           <?php foreach ($resultats as $resultat): ?>
             <tr>
               <td><?= htmlspecialchars($resultat['bat_matricule']?? 'x') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_nom']?? 'x') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_type']?? 'x') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_pays']?? 'x') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_ville']?? 'x') ?></td>
-              <td><?= htmlspecialchars($resultat['bat_gabarit']?? 'x') ?></td>
+              <td><?= htmlspecialchars(empty($resultat['bat_nom']) || strtoupper($resultat['bat_nom']) === 'NULL'? 'x': $resultat['bat_nom']) ?></td>
+              <td><?= htmlspecialchars(empty($resultat['bat_type']) || strtoupper($resultat['bat_type']) === 'NULL'? 'x': $resultat['bat_type']) ?></td>
+              <td><?= htmlspecialchars(empty($resultat['bat_pays']) || strtoupper($resultat['bat_pays']) === 'NULL'? 'x': $resultat['bat_pays']) ?></td>
+              <td><?= htmlspecialchars(empty($resultat['bat_ville']) || strtoupper($resultat['bat_ville']) === 'NULL'? 'x': $resultat['bat_ville']) ?></td>
+              <td><?= htmlspecialchars(empty($resultat['bat_gabarit']) || strtoupper($resultat['bat_gabarit']) === 'NULL'? 'x': $resultat['bat_gabarit']) ?></td>
             </tr>
           <?php endforeach; ?>
         <?php endif; ?>

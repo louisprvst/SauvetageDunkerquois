@@ -23,21 +23,6 @@ function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers
         $params[':prenomun'] = "%$pers_prenomun%";
     }
 
-    if (!empty($pers_prenomdeux)) {
-        $sql .= " AND pers_prenom2 LIKE :prenomdeux";
-        $params[':prenomdeux'] = "%$pers_prenomdeux%";
-    }
-
-    if (!empty($pers_prenomtrois)) {
-        $sql .= " AND pers_prenom3 LIKE :prenomtrois";
-        $params[':prenomtrois'] = "%$pers_prenomtrois%";
-    }
-
-    if (!empty($pers_sexe)) {
-        $sql .= " AND pers_sexe LIKE :sexe";
-        $params[':sexe'] = "%$pers_sexe%";
-    }
-
     if (!empty($pers_nationalite)) {
         $sql .= " AND pers_nationalite LIKE :nationalite";
         $params[':nationalite'] = "%$pers_nationalite%";
@@ -102,10 +87,32 @@ function rechercheParMatricule(string $matricule) {
 
 
 
+    $sql = "SELECT sauve.* , sortmer.sort_mer_date_sauvetage FROM Etre_sauve AS sauve 
+            JOIN Personne AS pers ON sauve.pers_matricule = pers.pers_matricule 
+            JOIN Sortie_en_mer AS sortmer ON sauve.sort_mer_matricule = sortmer.sort_mer_matricule
+            WHERE sauve.pers_matricule = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $matricule]);
+    $resultats_etre_sauve = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+    $sql = "SELECT sauve.* , sortmer.sort_mer_date_sauvetage FROM Participe_sauvetage AS sauve 
+            JOIN Personne AS pers ON sauve.pers_matricule = pers.pers_matricule 
+            JOIN Sortie_en_mer AS sortmer ON sauve.sort_mer_matricule = sortmer.sort_mer_matricule
+            WHERE sauve.pers_matricule = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $matricule]);
+    $resultats_participe_sauvetage = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     $resultats = [
         'personne' => $resultats_pers,
         'deces' => $resultats_deces,
-        'deco' => $resultats_deco
+        'deco' => $resultats_deco,
+        'etre_sauve' => $resultats_etre_sauve,
+        'participe_sauvetage' => $resultats_participe_sauvetage
     ];
 
     if (!empty($resultats)) {

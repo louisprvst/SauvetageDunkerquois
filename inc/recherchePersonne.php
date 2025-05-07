@@ -16,12 +16,14 @@
 <div style="text-align: center; margin-top: 20px;">
   <button type="submit" form="personne" class="bluebutton">Rechercher</button>
 
-  <button type="button" onclick="window.location.href=window.location.pathname" class="bluebutton"margin: 5px;"> Réinitialiser </button>
+  <button type="button" onclick="window.location.href=window.location.pathname" class="bluebutton"> Réinitialiser </button>
 </div>
 
 <div class="bluecase">
 
   <h2 style="text-align: center;">Recherche de Personnes</h2>
+
+  <p class="tips">Cliquez sur matricule pour plus d'informations</p>
 
   <form method="post" id="personne">
     <table style="width: 100%; margin-top: 1rem;">
@@ -36,13 +38,13 @@
           <th>Métier</th> 
         </tr>
         <tr>
-          <td><input type="text" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
-          <td><input type="text" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
-          <td><input type="text" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>
-          <td><input type="text" name="pers_nationalite" value="<?= htmlspecialchars($nationalite) ?>"></td>
-          <td><input type="text" name="pers_naissance" value="<?= htmlspecialchars($naissance) ?>"></td>
-          <td><input type="text" name="pers_lieu_nai" value="<?= htmlspecialchars($lieu_nai) ?>"></td>
-          <td><input type="text" name="pers_metier" value="<?= htmlspecialchars($metier) ?>"></td> 
+          <td><input type="text" placeholder="Recherche par matricule" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
+          <td><input type="text" placeholder="Recherche par nom" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
+          <td><input type="text" placeholder="Recherche par prenom" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>
+          <td><input type="text" placeholder="Recherche par nationalite" name="pers_nationalite" value="<?= htmlspecialchars($nationalite) ?>"></td>
+          <td><input type="text" placeholder="Recherche par date de naissance" name="pers_naissance" value="<?= htmlspecialchars($naissance) ?>"></td>
+          <td><input type="text" placeholder="Recherche par lieu de naissance" name="pers_lieu_nai" value="<?= htmlspecialchars($lieu_nai) ?>"></td>
+          <td><input type="text" placeholder="Recherche par metier" name="pers_metier" value="<?= htmlspecialchars($metier) ?>"></td> 
         </tr>
       </thead>
       <tbody>

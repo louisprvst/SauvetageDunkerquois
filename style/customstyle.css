@@ -4,7 +4,6 @@
     padding: 2rem; 
     margin: 2rem auto; 
     display: table; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .bluebutton {
@@ -14,4 +13,14 @@
     border: none; 
     border-radius: 5px; 
     margin: 5px;
+}
+
+.tips {
+    font-style: italic;
+    text-align: center;
+    color: #4a4674;
+}
+
+.fiche_title {
+    margin-top: 1rem;
 }
