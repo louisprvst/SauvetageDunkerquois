@@ -81,18 +81,31 @@ function rechercheParMatricule(string $matricule) {
 
 
 
-    $sql = "SELECT deces.* , pers.pers_matricule FROM Deces AS deces 
+    $sql = "SELECT deces.* FROM Deces AS deces 
             JOIN Personne AS pers ON deces.pers_matricule = pers.pers_matricule 
             WHERE deces.pers_matricule = :matricule";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':matricule' => $matricule]);
-
     $resultats_deces = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+    $sql = "SELECT deco.* , decoinfo.* FROM Etre_decore AS deco 
+            JOIN Personne AS pers ON deco.pers_matricule = pers.pers_matricule 
+            JOIN Decoration AS decoinfo ON deco.deco_matricule = decoinfo.deco_matricule
+            WHERE deco.pers_matricule = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $matricule]);
+    $resultats_deco = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
 
     $resultats = [
         'personne' => $resultats_pers,
-        'deces' => $resultats_deces
+        'deces' => $resultats_deces,
+        'deco' => $resultats_deco
     ];
 
     if (!empty($resultats)) {
