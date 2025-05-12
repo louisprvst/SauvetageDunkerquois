@@ -165,24 +165,24 @@
         }
       ?>
 
-      <table style="width: 100%; margin-top: 1rem;">
-        <thead>
-          <tr>
-            <th style="padding-right: 1rem;">Date du sauvetage</th>
-            <th>Matricule de la sortie en mer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if(!empty($personne['participe_sauvetage'])) : ?>
+      <?php if(!empty($personne['participe_sauvetage'])) : ?>
+        <table style="width: 100%; margin-top: 1rem;">
+          <thead>
+            <tr>
+              <th style="padding-right: 1rem;">Date du sauvetage</th>
+              <th>Matricule de la sortie en mer</th>
+            </tr>
+          </thead>
+          <tbody>
             <?php foreach ($personne['participe_sauvetage'] as $resultat): ?>
               <tr>
                 <td style="padding-right: 1rem;"><?= htmlspecialchars($resultat['sort_mer_date_sauvetage'] ?? 'x') ?></td>
                 <td><?= htmlspecialchars($resultat['sort_mer_matricule'] ?? 'x') ?></td>
               </tr>
             <?php endforeach; ?>
-          <?php endif; ?>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      <?php endif; ?>
 
       <div style="text-align:center; margin-top:2rem;">
         <a href="../index.php" class="bluebutton">Retour à la recherche</a>
