@@ -1,13 +1,16 @@
 <?php
 
-function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers_prenomun, string $pers_nationalite, string $pers_naissance, string $pers_lieu_nai, string $pers_metier) {
+function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers_prenomun, string $pers_nationalite, string $pers_naissance, string $pers_lieu_nai, string $pers_metier, string $is_sauveteurs) {
 
     $pdo = require_once __DIR__ . '/../lib/mypdo.php';
 
     $sql = "SELECT * FROM Personne WHERE 1 = 1" ;
 
     $params = [];
-
+    if ($is_sauveteurs) {
+        $sql .= " AND pers_fonction_sauvetage_matricule IS NOT NULL";
+    }
+    
     if (!empty($pers_matricule)) {
         $sql .= " AND pers_matricule LIKE :matricule";
         $params[':matricule'] = "%$pers_matricule%";

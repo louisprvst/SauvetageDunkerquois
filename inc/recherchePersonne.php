@@ -6,9 +6,10 @@
   $naissance = $_POST['pers_naissance'] ?? '';
   $lieu_nai = $_POST['pers_lieu_nai'] ?? '';
   $metier = $_POST['pers_metier'] ?? '';
+  $is_sauveteurs = $_POST['sauveteurs'] ?? false;
 
   require_once __DIR__ . '/../class/recherchePersonne.php';
-  $resultats = rechercheGeneral($matricule, $nom, $prenomun, $nationalite, $naissance, $lieu_nai, $metier);
+  $resultats = rechercheGeneral($matricule, $nom, $prenomun, $nationalite, $naissance, $lieu_nai, $metier, $is_sauveteurs);
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
@@ -29,6 +30,7 @@
     <table style="width: 100%; margin-top: 1rem;">
       <thead>
         <tr>
+          <th></th>
           <th>Matricule</th>
           <th>Nom</th>
           <th>Prenom</th>
@@ -38,6 +40,7 @@
           <th>Métier</th> 
         </tr>
         <tr>
+          <td><input type="checkbox" name="sauveteurs" value="1" <?= $is_sauveteurs ? 'checked' : '' ?>></td>
           <td><input type="text" placeholder="Recherche par matricule" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
           <td><input type="text" placeholder="Recherche par nom" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
           <td><input type="text" placeholder="Recherche par prenom" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>
@@ -51,6 +54,10 @@
         <?php if (!empty($resultats)) : ?>
           <?php foreach ($resultats as $resultat): ?>
             <tr>
+              <td> <?php if (!empty($resultat['pers_fonction_sauvetage_matricule'])) : 
+                echo '<img src="/../img/logo_snsm.png" alt="logo des sauveteurs" style="height: 20px; width: auto;"'; 
+                endif ;?> 
+              </td>
               <td>
                 <a href="inc/detailsPersonne.php?matricule=<?= urlencode($resultat['pers_matricule']) ?>">
                   <?= htmlspecialchars($resultat['pers_matricule']) ?>
