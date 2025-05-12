@@ -1,13 +1,31 @@
 <?php
-  $matricule = $_POST['bat_matricule'] ?? '';
-  $nom = $_POST['bat_nom'] ?? '';
-  $type = $_POST['bat_type'] ?? '';
-  $pays = $_POST['bat_pays'] ?? '';
-  $ville = $_POST['bat_ville'] ?? '';
-  $gabarit = $_POST['bat_gabarit'] ?? '';
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['bat_search']['bat_matricule'] = $_POST['bat_matricule'] ?? '';
+    $_SESSION['bat_search']['bat_nom'] = $_POST['bat_nom'] ?? '';
+    $_SESSION['bat_search']['bat_type'] = $_POST['bat_type'] ?? '';
+    $_SESSION['bat_search']['bat_pays'] = $_POST['bat_pays'] ?? '';
+    $_SESSION['bat_search']['bat_ville'] = $_POST['bat_ville'] ?? '';
+    $_SESSION['bat_search']['bat_gabarit'] = $_POST['bat_gabarit'] ?? '';
+  }
+
+  $matricule = $_SESSION['bat_search']['bat_matricule'] ?? '';
+  $nom = $_SESSION['bat_search']['bat_nom'] ?? '';
+  $type = $_SESSION['bat_search']['bat_type'] ?? '';
+  $pays = $_SESSION['bat_search']['bat_pays'] ?? '';
+  $ville = $_SESSION['bat_search']['bat_ville'] ?? '';
+  $gabarit = $_SESSION['bat_search']['bat_gabarit'] ?? '';
+
+  if (isset($_GET['reset']) && $_GET['reset'] == 1) {
+    unset($_SESSION['bat_search']);
+  }
 
   require_once __DIR__ . '/../class/rechercheBateau.php';
   $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
+
+  echo '<pre>';
+  var_dump($_SESSION);
+  echo '</pre>';
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
@@ -15,7 +33,7 @@
 <div style="text-align: center; margin-top: 20px;">
   <button type="submit" form="bateau" class="bluebutton">Rechercher</button>
 
-  <button type="button" onclick="window.location.href=window.location.pathname" class="bluebutton"> Réinitialiser </button>
+  <button type="button" onclick="window.location.href=window.location.pathname + '?reset=1'" class="bluebutton"> Réinitialiser </button>
 </div>
 
 <div class="bluecase">

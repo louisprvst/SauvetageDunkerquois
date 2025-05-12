@@ -1,15 +1,35 @@
 <?php
-  $matricule = $_POST['pers_matricule'] ?? '';
-  $nom = $_POST['pers_nom'] ?? '';
-  $prenomun = $_POST['pers_prenomun'] ?? '';
-  $nationalite = $_POST['pers_nationalite'] ?? '';
-  $naissance = $_POST['pers_naissance'] ?? '';
-  $lieu_nai = $_POST['pers_lieu_nai'] ?? '';
-  $metier = $_POST['pers_metier'] ?? '';
-  $is_sauveteurs = $_POST['sauveteurs'] ?? false;
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['pers_search']['pers_matricule'] = $_POST['pers_matricule'] ?? '';
+    $_SESSION['pers_search']['pers_nom'] = $_POST['pers_nom'] ?? '';
+    $_SESSION['pers_search']['pers_prenomun'] = $_POST['pers_prenomun'] ?? '';
+    $_SESSION['pers_search']['pers_nationalite'] = $_POST['pers_nationalite'] ?? '';
+    $_SESSION['pers_search']['pers_naissance'] = $_POST['pers_naissance'] ?? '';
+    $_SESSION['pers_search']['pers_lieu_nai'] = $_POST['pers_lieu_nai'] ?? '';
+    $_SESSION['pers_search']['pers_metier'] = $_POST['pers_metier'] ?? '';
+    $_SESSION['pers_search']['sauveteurs'] = $_POST['sauveteurs'] ?? false ;
+  }
+
+  $matricule = $_SESSION['pers_search']['pers_matricule'] ?? '';
+  $nom = $_SESSION['pers_search']['pers_nom'] ?? '';
+  $prenomun = $_SESSION['pers_search']['pers_prenomun'] ?? '';
+  $nationalite = $_SESSION['pers_search']['pers_nationalite'] ?? '';
+  $naissance = $_SESSION['pers_search']['pers_naissance'] ?? '';
+  $lieu_nai = $_SESSION['pers_search']['pers_lieu_nai'] ?? '';
+  $metier = $_SESSION['pers_search']['pers_metier'] ?? '';
+  $is_sauveteurs = $_SESSION['pers_search']['sauveteurs'] ?? false;
+
+  if (isset($_GET['reset']) && $_GET['reset'] == 1) {
+    unset($_SESSION['pers_search']);
+  }
 
   require_once __DIR__ . '/../class/recherchePersonne.php';
   $resultats = rechercheGeneral($matricule, $nom, $prenomun, $nationalite, $naissance, $lieu_nai, $metier, $is_sauveteurs);
+
+  echo '<pre>';
+  var_dump($_SESSION);
+  echo '</pre>';
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
@@ -17,7 +37,7 @@
 <div style="text-align: center; margin-top: 20px;">
   <button type="submit" form="personne" class="bluebutton">Rechercher</button>
 
-  <button type="button" onclick="window.location.href=window.location.pathname" class="bluebutton"> Réinitialiser </button>
+  <button type="button" onclick="window.location.href=window.location.pathname + '?reset=1'" class="bluebutton"> Réinitialiser </button>
 </div>
 
 <div class="bluecase">
