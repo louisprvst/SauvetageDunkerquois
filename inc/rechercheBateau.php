@@ -22,10 +22,6 @@
 
   require_once __DIR__ . '/../class/rechercheBateau.php';
   $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
-
-  echo '<pre>';
-  var_dump($_SESSION);
-  echo '</pre>';
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
@@ -66,7 +62,7 @@
         <?php if (!empty($resultats)) : ?>
           <?php foreach ($resultats as $resultat): ?>
             <tr>
-              <td><?= htmlspecialchars($resultat['bat_matricule']?? 'x') ?></td>
+              <td><?= htmlspecialchars($resultat['bat_matricule']) ?></td>
               <td><?= htmlspecialchars(empty($resultat['bat_nom']) || strtoupper($resultat['bat_nom']) === 'NULL'? 'x': $resultat['bat_nom']) ?></td>
               <td><?= htmlspecialchars(empty($resultat['bat_type']) || strtoupper($resultat['bat_type']) === 'NULL'? 'x': $resultat['bat_type']) ?></td>
               <td><?= htmlspecialchars(empty($resultat['bat_pays']) || strtoupper($resultat['bat_pays']) === 'NULL'? 'x': $resultat['bat_pays']) ?></td>

@@ -33,16 +33,14 @@
   <?php include 'header.inc.php' ; ?>
 
   <div id="page-content" class="bp-page-content main-section" role="main">
-    <div id="c36555"
-        class="frame frame-size-default frame-default frame-type-header frame-layout-default frame-background-primary frame-no-backgroundimage frame-space-before-none frame-space-after-none">
+    <div id="c36555" class="frame frame-size-default frame-default frame-type-header frame-layout-default frame-background-primary frame-no-backgroundimage frame-space-before-none frame-space-after-none">
         <div class="frame-group-container">
             <div class="frame-group-inner">
                 <div class="frame-container frame-container-default">
                     <div class="frame-inner">
                         <header class="frame-header">
                             <h1 class="element-header">
-                                <span><?= htmlspecialchars($personne['personne']['pers_nom'])?>
-                                    <?= htmlspecialchars($personne['personne']['pers_prenom1'])?></span>
+                              <span><?= htmlspecialchars($personne['personne']['pers_nom'])?> <?= htmlspecialchars($personne['personne']['pers_prenom1'])?></span>
                             </h1>
                         </header>
                     </div>
@@ -50,7 +48,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="bluecase">
 
@@ -124,7 +121,9 @@
             }
 
             if (!empty($personne['deces']['sortie_en_mer_matricule'])) {
-              echo '<div><p>Sortie en mer du deces : ' . htmlspecialchars($personne['deces']['sortie_en_mer_matricule']) . '</p></div>';
+              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['deces']['sortie_en_mer_matricule']) . 
+                   '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
+                   htmlspecialchars($personne['deces']['sortie_en_mer_matricule']) . '</a> </p></div>';
             }
 
           if (!empty($personne['deco'])) {
@@ -144,8 +143,12 @@
             }
 
             if (!empty($personne['deco']['sort_mer_matricule'])) {
-              echo '<div><p>Sortie en mer de la deco : ' . htmlspecialchars($personne['deco']['sort_mer_matricule']) . '</p></div>';
+              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['deco']['sort_mer_matricule']) . 
+                   '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
+                   htmlspecialchars($personne['deco']['sort_mer_matricule']) . '</a> </p></div>';
             }
+
+
 
           if (!empty($personne['etre_sauve'])) {
             echo '<p class="fiche_title"> <strong> Détails de son sauvetage : </strong> </p>';
@@ -156,7 +159,9 @@
             }
 
             if (!empty($personne['etre_sauve']['sort_mer_matricule'])) {
-              echo '<div><p>Sortie en mer : ' . htmlspecialchars($personne['etre_sauve']['sort_mer_matricule']) . '</p></div>';
+              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['etre_sauve']['sort_mer_matricule']) . 
+                    '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
+                    htmlspecialchars($personne['etre_sauve']['sort_mer_matricule']) . '</a> </p></div>';     
             }
 
           if (!empty($personne['participe_sauvetage'])) {
@@ -177,7 +182,11 @@
             <?php foreach ($personne['participe_sauvetage'] as $resultat): ?>
               <tr>
                 <td style="padding-right: 1rem;"><?= htmlspecialchars($resultat['sort_mer_date_sauvetage'] ?? 'x') ?></td>
-                <td><?= htmlspecialchars($resultat['sort_mer_matricule'] ?? 'x') ?></td>
+                <td>
+                  <a href="detailsSortie.php?matricule=<?= urlencode($resultat['sort_mer_matricule']) ?>&persmatricule=<?= urlencode($personne['personne']['pers_matricule']) ?>">
+                    <?= htmlspecialchars($resultat['sort_mer_matricule']) ?>
+                  </a>
+                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>

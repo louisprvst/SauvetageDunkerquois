@@ -26,10 +26,6 @@
 
   require_once __DIR__ . '/../class/recherchePersonne.php';
   $resultats = rechercheGeneral($matricule, $nom, $prenomun, $nationalite, $naissance, $lieu_nai, $metier, $is_sauveteurs);
-
-  echo '<pre>';
-  var_dump($_SESSION);
-  echo '</pre>';
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
