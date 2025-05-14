@@ -126,25 +126,26 @@
                    htmlspecialchars($personne['deces']['sortie_en_mer_matricule']) . '</a> </p></div>';
             }
 
-          if (!empty($personne['deco'])) {
-            echo '<p class="fiche_title"> <strong> Détails de la décoration : </strong> </p>';
+          if(!empty($personne['deco'])) {
+            foreach($personne['deco'] as $deco) {
+                
+              echo '<p class="fiche_title"> <strong> Détails de la décoration : </strong> </p>';
+              
+              if (!empty($deco['annee'])) {
+                echo '<div><p>Date de la décoration :' . htmlspecialchars($deco['annee']) . '</p></div>';
+              }
+
+              if (!empty($deco['deco_description'])) {
+                echo '<div><p>Décoration : ' . htmlspecialchars($deco['deco_description']) . '</p></div>';
+              }
+
+              if (!empty($deco['sort_mer_matricule'])) {
+                echo '<div><p>Sortie en mer de la decoration : <a href="detailsSortie.php?matricule=' . urlencode($deco['sort_mer_matricule']) . 
+                    '&persmatricule=' . urlencode($deco['pers_matricule']) . '">' . 
+                    htmlspecialchars($deco['sort_mer_matricule']) . '</a> </p></div>';
+              }
+            }          
           }
-
-            if (!empty($personne['deco']['annee'])) {
-              echo '<div><p>Date de la décoration :' . htmlspecialchars($personne['deco']['annee']) . '</p></div>';
-            }
-
-            if (!empty($personne['deco']['deco_description'])) {
-              echo '<div><p>Décoration : ' . htmlspecialchars($personne['deco']['deco_description']) . '</p></div>';
-            }
-
-            if (!empty($personne['deco']['sort_mer_matricule'])) {
-              echo '<div><p>Sortie en mer de la decoration : <a href="detailsSortie.php?matricule=' . urlencode($personne['deco']['sort_mer_matricule']) . 
-                   '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
-                   htmlspecialchars($personne['deco']['sort_mer_matricule']) . '</a> </p></div>';
-            }
-
-
 
           if (!empty($personne['etre_sauve'])) {
             echo '<p class="fiche_title"> <strong> Détails de son sauvetage : </strong> </p>';

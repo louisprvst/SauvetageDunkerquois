@@ -86,7 +86,7 @@ function rechercheParMatricule(string $matricule) {
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':matricule' => $matricule]);
-    $resultats_deco = $stmt->fetch(PDO::FETCH_ASSOC);
+    $resultats_deco = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
