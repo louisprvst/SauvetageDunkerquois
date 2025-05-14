@@ -83,7 +83,46 @@
             <?php foreach ($sortie['participe'] as $resultat): ?>
                 <li>
                     <a href="detailsPersonne.php?matricule=<?= urlencode($resultat['pers_matricule']) ?>">
-                        <?= htmlspecialchars($resultat['pers_matricule']) ?>
+                        <?= htmlspecialchars($resultat['pers_matricule']) . " ( " . htmlspecialchars($resultat['pers_nom']) . " " . htmlspecialchars($resultat['pers_prenom1']) . " ) "?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+    <?php if(!empty($sortie['sauve'])) : ?>
+        <p> <strong> Personnes sauvées lors du sauvetage : </strong> </p>
+        <ul>
+            <?php foreach ($sortie['sauve'] as $resultat): ?>
+                <li>
+                    <a href="detailsPersonne.php?matricule=<?= urlencode($resultat['pers_matricule']) ?>">
+                        <?= htmlspecialchars($resultat['pers_matricule']) . " ( " . htmlspecialchars($resultat['pers_nom']) . " " . htmlspecialchars($resultat['pers_prenom1']) . " ) "?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+    <?php if(!empty($sortie['deces'])) : ?>
+        <p> <strong> Personnes décédées : </strong> </p>
+        <ul>
+            <?php foreach ($sortie['deces'] as $resultat): ?>
+                <li>
+                    <a href="detailsPersonne.php?matricule=<?= urlencode($resultat['pers_matricule']) ?>">
+                        <?= htmlspecialchars($resultat['pers_matricule']) . " ( " . htmlspecialchars($resultat['pers_nom']) . " " . htmlspecialchars($resultat['pers_prenom1']) . " ) "?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+    <?php if(!empty($sortie['deco'])) : ?>
+        <p> <strong> Personnes décorées à l'issue de ce sauvetage : </strong> </p>
+        <ul>
+            <?php foreach ($sortie['deco'] as $resultat): ?>
+                <li>
+                    <a href="detailsPersonne.php?matricule=<?= urlencode($resultat['pers_matricule']) ?>">
+                        <?= htmlspecialchars($resultat['pers_matricule']) . " ( " . htmlspecialchars($resultat['pers_nom']) . " " . htmlspecialchars($resultat['pers_prenom1']) . " ) "?>
                     </a>
                 </li>
             <?php endforeach; ?>

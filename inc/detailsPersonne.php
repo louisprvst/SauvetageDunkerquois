@@ -138,12 +138,8 @@
               echo '<div><p>Décoration : ' . htmlspecialchars($personne['deco']['deco_description']) . '</p></div>';
             }
 
-            if (!empty($personne['deco']['deco_origine'])) {
-              echo '<div><p>Origine de la décoration : ' . htmlspecialchars($personne['deco']['deco_origine']) . '</p></div>';
-            }
-
             if (!empty($personne['deco']['sort_mer_matricule'])) {
-              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['deco']['sort_mer_matricule']) . 
+              echo '<div><p>Sortie en mer de la decoration : <a href="detailsSortie.php?matricule=' . urlencode($personne['deco']['sort_mer_matricule']) . 
                    '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
                    htmlspecialchars($personne['deco']['sort_mer_matricule']) . '</a> </p></div>';
             }
