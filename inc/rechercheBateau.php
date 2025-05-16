@@ -36,7 +36,7 @@
 
   <h2 style="text-align: center;">Recherche de Bateaux</h2>
 
-  <p class="tips">Cliquez sur matricule pour plus d'informations</p>
+  <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
 
   <form method="post" id="bateau">
     <table style="width: 100%; margin-top: 1rem;">
@@ -62,7 +62,11 @@
         <?php if (!empty($resultats)) : ?>
           <?php foreach ($resultats as $resultat): ?>
             <tr>
-              <td><?= htmlspecialchars($resultat['bat_matricule']) ?></td>
+              <td>
+                <a href="inc/detailsBateau.php?matricule=<?= urlencode($resultat['bat_matricule']) ?>">
+                  <?= htmlspecialchars($resultat['bat_matricule']) ?>
+                </a>
+              </td>
               <td><?= htmlspecialchars(empty($resultat['bat_nom']) || strtoupper($resultat['bat_nom']) === 'NULL'? 'x': $resultat['bat_nom']) ?></td>
               <td><?= htmlspecialchars(empty($resultat['bat_type']) || strtoupper($resultat['bat_type']) === 'NULL'? 'x': $resultat['bat_type']) ?></td>
               <td><?= htmlspecialchars(empty($resultat['bat_pays']) || strtoupper($resultat['bat_pays']) === 'NULL'? 'x': $resultat['bat_pays']) ?></td>

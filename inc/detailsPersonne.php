@@ -101,7 +101,9 @@
             }
 
             if (!empty($personne['personne']['pers_affectation_complement'])) {
-              echo '<div><p>Affectation : ' . htmlspecialchars($personne['personne']['pers_affectation_complement']) . '</p></div>';
+              echo '<div><p>Affecté sur le bateau : <a href="detailsBateau.php?matricule=' . 
+                urlencode($personne['personne']['pers_affectation_complement']) . '">' . 
+                htmlspecialchars($personne['personne']['pers_affectation_complement']) . '</a> </p> </div>';
             }
 
             if (!empty($personne['personne']['pers_observation'])) {

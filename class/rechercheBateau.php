@@ -46,3 +46,34 @@ function rechercheGeneral(string $bat_matricule, string $bat_nom, string $bat_ty
         return $resultats ;
     } 
 }
+
+
+function rechercheMatricule(string $bat_matricule) {
+
+    $pdo = require_once __DIR__ . '/../lib/mypdo.php';
+
+    $sql = "SELECT * FROM Bateau WHERE bat_matricule = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $bat_matricule]);
+    $bateau = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+    $sql = "SELECT pers.pers_matricule , pers.pers_nom , pers.pers_prenom1 FROM Personne AS pers 
+    JOIN Bateau AS bat ON pers.pers_affectation_complement = bat.bat_matricule
+    WHERE pers.pers_affectation_complement = :matricule";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $bat_matricule]);
+    $affectation = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $resultats = [
+        'bateau' => $bateau,
+        'affectation' => $affectation
+    ];
+
+    if (!empty($resultats)) {
+        return $resultats ;
+    } 
+}

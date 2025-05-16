@@ -12,7 +12,7 @@
 <html lang="fr-FR">
 
 <head>
-    <title>Historique des naufrages - CMUA</title>
+    <title>Historique des naufrages - CMUA</title> 
 
     <link rel="icon" href="https://archives-dunkerque.fr/fileadmin/CMUA/favicon.ico" type="image/vnd.microsoft.icon" />
 
@@ -57,6 +57,8 @@
       <?php
         if ($sortie['sortie']) {
 
+            echo '<div class="fiche_title"></div>';
+
             if (!empty($sortie['sortie']['sort_mer_sauvetage_equipage'])) {
                 echo '<div><p>Tout l\'équipage a été sauvé.</p></div>';
             }
@@ -78,7 +80,7 @@
       ?>
 
     <?php if(!empty($sortie['participe'])) : ?>
-        <p> <strong> Personnes ayant participé au sauvetage : </strong> </p>
+        <p class="fiche_title"> <strong> Personnes ayant participé au sauvetage : </strong> </p>
         <ul>
             <?php foreach ($sortie['participe'] as $resultat): ?>
                 <li>
@@ -91,7 +93,7 @@
     <?php endif; ?>
 
     <?php if(!empty($sortie['sauve'])) : ?>
-        <p> <strong> Personnes sauvées lors du sauvetage : </strong> </p>
+        <p class="fiche_title"> <strong> Personnes sauvées lors du sauvetage : </strong> </p>
         <ul>
             <?php foreach ($sortie['sauve'] as $resultat): ?>
                 <li>
@@ -104,7 +106,7 @@
     <?php endif; ?>
 
     <?php if(!empty($sortie['deces'])) : ?>
-        <p> <strong> Personnes décédées : </strong> </p>
+        <p class="fiche_title"> <strong> Personnes décédées : </strong> </p>
         <ul>
             <?php foreach ($sortie['deces'] as $resultat): ?>
                 <li>
@@ -117,7 +119,7 @@
     <?php endif; ?>
 
     <?php if(!empty($sortie['deco'])) : ?>
-        <p> <strong> Personnes décorées à l'issue de ce sauvetage : </strong> </p>
+        <p class="fiche_title"> <strong> Personnes décorées à l'issue de ce sauvetage : </strong> </p>
         <ul>
             <?php foreach ($sortie['deco'] as $resultat): ?>
                 <li>

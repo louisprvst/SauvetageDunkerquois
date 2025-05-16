@@ -40,7 +40,7 @@
 
   <h2 style="text-align: center;">Recherche de Personnes</h2>
 
-  <p class="tips">Cliquez sur matricule pour plus d'informations</p>
+  <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
 
   <form method="post" id="personne">
     <table style="width: 100%; margin-top: 1rem;">
