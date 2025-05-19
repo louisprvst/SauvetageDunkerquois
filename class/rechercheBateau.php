@@ -68,9 +68,32 @@ function rechercheMatricule(string $bat_matricule) {
     $stmt->execute([':matricule' => $bat_matricule]);
     $affectation = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+    $sql = "SELECT sort_mer_matricule, commandant_bateau_secouru AS patron, 'Bateau secouru' AS role FROM details_sortie_en_mer WHERE bateau_secouru = :matricule
+            UNION ALL
+            SELECT sort_mer_matricule, canot1_patron AS patron, 'Canot' AS role FROM details_sortie_en_mer WHERE canot1 = :matricule
+            UNION ALL
+            SELECT sort_mer_matricule, canot2_patron AS patron, 'Canot' AS role FROM details_sortie_en_mer WHERE canot2 = :matricule
+            UNION ALL
+            SELECT sort_mer_matricule, remorqueur1_patron AS patron, 'Remorqueur' AS role FROM details_sortie_en_mer WHERE remorqueur1 = :matricule
+            UNION ALL
+            SELECT sort_mer_matricule, remorqueur2_patron AS patron, 'Remorqueur' AS role FROM details_sortie_en_mer WHERE remorqueur2 = :matricule
+            UNION ALL
+            SELECT sort_mer_matricule, pilotage1_patron AS patron, 'Bateau de pilotage' AS role FROM details_sortie_en_mer WHERE pilotage1 = :matricule
+            UNION ALL
+            SELECT sort_mer_matricule, lamanage_patron AS patron, 'Bateau de lamanage' AS role FROM details_sortie_en_mer WHERE lamanage = :matricule ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':matricule' => $bat_matricule]);
+    $detail = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
     $resultats = [
         'bateau' => $bateau,
-        'affectation' => $affectation
+        'affectation' => $affectation ,
+        'detail' => $detail
     ];
 
     if (!empty($resultats)) {

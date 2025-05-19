@@ -162,14 +162,13 @@
                     '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
                     htmlspecialchars($personne['etre_sauve']['sort_mer_matricule']) . '</a> </p></div>';     
             }
-
-          if (!empty($personne['participe_sauvetage'])) {
-            echo '<p class="fiche_title"> <strong> Détails de ses participations aux sauvetages : </strong> </p>';
-          }
         }
       ?>
 
       <?php if(!empty($personne['participe_sauvetage'])) : ?>
+
+        <?php echo '<p class="fiche_title"> <strong> Détails de ses participations aux sauvetages : </strong> </p>'; ?>
+        
         <table style="width: 100%; margin-top: 1rem;">
           <thead>
             <tr>

@@ -80,6 +80,7 @@
         }
       ?>
 
+
       <?php if(!empty($bateau['affectation'])) : ?>
         <p class="fiche_title"> <strong> Personne affecté sur ce bateau : </strong> </p>
         <ul>
@@ -93,8 +94,44 @@
                 </li>
             <?php endforeach; ?>
         </ul>
-    <?php endif; ?>
+      <?php endif; ?>
+
+
+      <?php if(!empty($bateau['detail'])) : ?>
+
+        <?php echo '<p class="fiche_title"> <strong> Détails de ses sortie(s) en mer : </strong> </p>'; ?>
+
+        <table style="width: 100%; margin-top: 1rem;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding-right: 1rem;">Sortie en mer</th>
+              <th style="text-align: left; padding-right: 1rem;">Rôle</th>
+              <th style="text-align: left;">Patron</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($bateau['detail'] as $resultat): ?>
+              <tr>
+                <td style="padding-right: 1rem;">
+                    <a href="detailsSortie.php?matricule=<?= urlencode($resultat['sort_mer_matricule']) ?>">
+                        <?= htmlspecialchars($resultat['sort_mer_matricule'])?> 
+                    </a>
+                </td>
+                <td style="padding-right: 1rem;">
+                    <?= htmlspecialchars($resultat['role'])?>
+                </td>
+                <td>
+                    <a href="detailsPersonne.php?matricule=<?= urlencode($resultat['patron']) ?>">
+                        <?=htmlspecialchars($resultat['patron'])?> 
+                    </a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php endif; ?>
       
+
       <div style="text-align:center; margin-top:2rem;">
         <a href="../index.php" class="bluebutton">Retour à la recherche</a>
       </div>
