@@ -130,6 +130,40 @@
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
+
+    <?php if(!empty($sortie['bateau'])) : ?>
+
+        <?php echo '<p class="fiche_title"> <strong> Bateau présent lors de la sortie : </strong> </p>'; ?>
+
+        <table style="width: 100%; margin-top: 1rem;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding-right: 1rem;">Bateau</th>
+              <th style="text-align: left; padding-right: 1rem;">Rôle</th>
+              <th style="text-align: left;">Patron</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($sortie['bateau'] as $resultat): ?>
+              <tr>
+                <td style="padding-right: 1rem;">
+                    <a href="detailsSortie.php?matricule=<?= urlencode($resultat['bat']) ?>">
+                        <?= htmlspecialchars($resultat['bat'])?> 
+                    </a>
+                </td>
+                <td style="padding-right: 1rem;">
+                    <?= htmlspecialchars($resultat['role'])?>
+                </td>
+                <td>
+                    <a href="detailsPersonne.php?matricule=<?= urlencode($resultat['patron']) ?>">
+                        <?=htmlspecialchars($resultat['patron'])?> 
+                    </a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php endif; ?>
       
       <div style="text-align:center; margin-top:2rem;">
         <a href="detailsPersonne.php?matricule=<?= urlencode($pers_matricule)?>" class="bluebutton">Retour à la personne</a>

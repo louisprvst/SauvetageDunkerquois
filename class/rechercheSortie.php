@@ -55,13 +55,34 @@ function rechercheGeneral(string $sort_mer_matricule) {
     $deco = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
+
+    $sql = "SELECT commandant_bateau_secouru AS patron, 'Bateau secouru' AS role, bateau_secouru AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND bateau_secouru IS NOT NULL
+            UNION ALL
+            SELECT canot1_patron AS patron, 'Canot' AS role, canot1 AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND canot1 IS NOT NULL
+            UNION ALL
+            SELECT canot2_patron AS patron, 'Canot' AS role, canot2 AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND canot2 IS NOT NULL
+            UNION ALL
+            SELECT remorqueur1_patron AS patron, 'Remorqueur' AS role, remorqueur1 AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND remorqueur1 IS NOT NULL
+            UNION ALL
+            SELECT remorqueur2_patron AS patron, 'Remorqueur' AS role, remorqueur2 AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND remorqueur2 IS NOT NULL
+            UNION ALL
+            SELECT pilotage1_patron AS patron, 'Pilotage' AS role, pilotage1 AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND pilotage1 IS NOT NULL
+            UNION ALL
+            SELECT lamanage_patron AS patron, 'Lamanage' AS role, lamanage AS bat FROM details_sortie_en_mer WHERE sort_mer_matricule = :sort_mer_matricule AND lamanage IS NOT NULL ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':sort_mer_matricule' => $sort_mer_matricule]);
+    $bateau = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
     
     $resultats = [
         'sortie' => $sortie,
         'participe' => $participe,
         'sauve' => $etre_sauve,
         'deces' => $deces,
-        'deco' => $deco
+        'deco' => $deco,
+        'bateau' => $bateau
     ];
 
     if (!empty($resultats)) {
