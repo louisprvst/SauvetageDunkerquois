@@ -46,6 +46,8 @@ function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers
         $params[':metier'] = "%$pers_metier%";
     }
 
+    $sql .= " ORDER BY pers_nom ASC;";
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -82,7 +84,8 @@ function rechercheParMatricule(string $matricule) {
     $sql = "SELECT deco.* , decoinfo.* FROM Etre_decore AS deco 
             JOIN Personne AS pers ON deco.pers_matricule = pers.pers_matricule 
             JOIN Decoration AS decoinfo ON deco.deco_matricule = decoinfo.deco_matricule
-            WHERE deco.pers_matricule = :matricule";
+            WHERE deco.pers_matricule = :matricule
+            ORDER BY deco.annee DESC";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':matricule' => $matricule]);
@@ -104,7 +107,8 @@ function rechercheParMatricule(string $matricule) {
     $sql = "SELECT sauve.* , sortmer.sort_mer_date_sauvetage FROM Participe_sauvetage AS sauve 
             JOIN Personne AS pers ON sauve.pers_matricule = pers.pers_matricule 
             JOIN Sortie_en_mer AS sortmer ON sauve.sort_mer_matricule = sortmer.sort_mer_matricule
-            WHERE sauve.pers_matricule = :matricule";
+            WHERE sauve.pers_matricule = :matricule
+            ORDER BY sortmer.sort_mer_date_sauvetage DESC";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':matricule' => $matricule]);

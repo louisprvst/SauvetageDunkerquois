@@ -38,6 +38,8 @@ function rechercheGeneral(string $bat_matricule, string $bat_nom, string $bat_ty
         $params[':gabarit'] = "%$bat_gabarit%";
     }
 
+    $sql .= " ORDER BY bat_nom ASC;";
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
