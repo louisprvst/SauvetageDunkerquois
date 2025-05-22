@@ -54,10 +54,12 @@
 
       <h2 style="text-align: center;"> <strong> Fiche Sortie en mer <?= htmlspecialchars($sortie['sortie']['sort_mer_matricule'])?> </strong> </h2>
 
+      <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
+
       <?php
         if ($sortie['sortie']) {
 
-            echo '<div class="fiche_title"></div>';
+            echo '<p class="fiche_title"><strong>Détails sur la sortie en mer :</strong></p>';
 
             if (!empty($sortie['sortie']['sort_mer_sauvetage_equipage'])) {
                 echo '<div><p>Tout l\'équipage a été sauvé.</p></div>';
@@ -68,6 +70,10 @@
             }
             
             echo '<div><p>Personnes disparus : ' . htmlspecialchars($sortie['sortie']['sort_mer_nb_perte']) . '</p></div>';
+
+            if (!empty($sortie['sortie']['sort_mer_date_sauvetage'])) {
+                echo '<div><p>Date du sauvetage : ' . htmlspecialchars($sortie['sortie']['sort_mer_date_sauvetage']) . '</p></div>';
+            }
 
             if (!empty($sortie['sortie']['sort_mer_duree'])) {
                 echo '<div><p>Duree de la sortie (minutes) : ' . htmlspecialchars($sortie['sortie']['sort_mer_duree']) . '</p></div>';

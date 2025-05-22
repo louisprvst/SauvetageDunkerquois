@@ -56,7 +56,7 @@
           <th>Métier</th> 
         </tr>
         <tr>
-          <td><input type="checkbox" name="sauveteurs" value="1" <?= $is_sauveteurs ? 'checked' : '' ?>></td>
+          <td><input type="checkbox" name="sauveteurs" value="1" <?= $is_sauveteurs ? 'checked' : '' ?> title="Cochez cette case si vous ne souhaitez afficher que les sauveteurs."></td>
           <td><input type="text" placeholder="Recherche par matricule" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
           <td><input type="text" placeholder="Recherche par nom" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
           <td><input type="text" placeholder="Recherche par prenom" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>

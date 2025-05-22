@@ -65,7 +65,7 @@
           if($_SESSION['choix'] === 'bateau') {
             include './inc/rechercheBateau.php';
           } 
-          elseif($_SESSION['choix'] === 'personne') {
+          else{
             include './inc/recherchePersonne.php';
           }
         ?>
