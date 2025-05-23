@@ -1,11 +1,11 @@
 <?php
 
-function rechercheGeneral(string $bat_matricule, string $bat_nom, string $bat_type, string $bat_pays, string $bat_ville, string $bat_gabarit) {
+function rechercheGeneral(string $bat_matricule, string $bat_nom, string $bat_type, string $bat_pays, string $bat_ville, string $bat_gabarit, int $offset = 0) {
 
     $pdo = require_once __DIR__ . '/../lib/mypdo.php';
 
-    $sql = "SELECT * FROM Bateau WHERE 1 = 1" ;
-
+    // C'est pour compter le nombre de résultats sans faire 2 requetes sql differentes c'est plus simple
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM Bateau WHERE 1 = 1" ;
     $params = [];
 
     if (!empty($bat_matricule)) {
@@ -38,15 +38,26 @@ function rechercheGeneral(string $bat_matricule, string $bat_nom, string $bat_ty
         $params[':gabarit'] = "%$bat_gabarit%";
     }
 
-    $sql .= " ORDER BY bat_nom ASC;";
+    $sql .= " ORDER BY bat_nom ASC LIMIT 25 OFFSET :offset";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
+
+    foreach ($params as $key => $val) {
+        $stmt->bindValue($key, $val);
+    }
+
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+    $stmt->execute();
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if (!empty($resultats)) {
-        return $resultats ;
-    } 
+    // Récupérer le total des lignes pour la pagination
+    $total = $pdo->query("SELECT FOUND_ROWS()")->fetchColumn();
+
+    return [
+        'resultats' => $resultats,
+        'total' => $total
+    ];
 }
 
 

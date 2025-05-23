@@ -1,16 +1,16 @@
 <?php
 
-function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers_prenomun, string $pers_nationalite, string $pers_naissance, string $pers_lieu_nai, string $pers_metier, string $is_sauveteurs) {
-
+function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers_prenomun, string $pers_nationalite, string $pers_naissance, string $pers_lieu_nai, string $pers_metier, string $is_sauveteurs, int $offset = 0) {
     $pdo = require_once __DIR__ . '/../lib/mypdo.php';
 
-    $sql = "SELECT * FROM Personne WHERE 1 = 1" ;
-
+    // C'est pour compter le nombre de résultats sans faire 2 requetes sql differentes c'est plus simple
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM Personne WHERE 1 = 1" ;
     $params = [];
+
     if ($is_sauveteurs) {
         $sql .= " AND pers_fonction_sauvetage_matricule IS NOT NULL";
     }
-    
+
     if (!empty($pers_matricule)) {
         $sql .= " AND pers_matricule LIKE :matricule";
         $params[':matricule'] = "%$pers_matricule%";
@@ -46,15 +46,26 @@ function rechercheGeneral(string $pers_matricule, string $pers_nom, string $pers
         $params[':metier'] = "%$pers_metier%";
     }
 
-    $sql .= " ORDER BY pers_nom ASC;";
+    $sql .= " ORDER BY pers_nom ASC LIMIT 25 OFFSET :offset";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
+
+    foreach ($params as $key => $val) {
+        $stmt->bindValue($key, $val);
+    }
+
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+    $stmt->execute();
     $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if (!empty($resultats)) {
-        return $resultats ;
-    } 
+    // Récupérer le total des lignes pour la pagination
+    $total = $pdo->query("SELECT FOUND_ROWS()")->fetchColumn();
+
+    return [
+        'resultats' => $resultats,
+        'total' => $total
+    ];
 }
 
 
@@ -113,6 +124,8 @@ function rechercheParMatricule(string $matricule) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':matricule' => $matricule]);
     $resultats_participe_sauvetage = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 
     $resultats = [
         'personne' => $resultats_pers,

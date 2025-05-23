@@ -16,12 +16,28 @@
   $ville = $_SESSION['bat_search']['bat_ville'] ?? '';
   $gabarit = $_SESSION['bat_search']['bat_gabarit'] ?? '';
 
+  // Bouton reset
   if (isset($_GET['reset']) && $_GET['reset'] == 1) {
     unset($_SESSION['bat_search']);
+    $page = 1;
   }
 
+  // Pagination
+  if (isset($_GET['page'])) {
+    $_SESSION['bat_search']['page'] = max(1, intval($_GET['page']));
+  }
+
+  $page = $_SESSION['bat_search']['page'] ?? 1;
+
+  $offset = ($page - 1) * 25;
+
+  // Pour recup les données
   require_once __DIR__ . '/../class/rechercheBateau.php';
-  $resultats = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit);
+  $data = rechercheGeneral($matricule, $nom, $type, $pays, $ville, $gabarit, $offset);
+
+  $resultats = $data['resultats'];
+  $total = $data['total'];
+  $total_pages = ceil($total / 25);
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
@@ -77,5 +93,22 @@
         <?php endif; ?>
       </tbody>
     </table>
+
+    <?php if ($total_pages > 1): ?>
+      <div style="text-align: center; margin-top: 1rem;">
+
+        <?php if ($page > 1): ?>
+          <a href="?page=<?= $page - 1 ?>" class="bluebutton">« Précédent</a>
+        <?php endif; ?>
+
+        <span class="bluebutton" style="font-weight: bold;"><?= $page . ' / ' . $total_pages?></span>
+
+        <?php if ($page < $total_pages): ?>
+          <a href="?page=<?= $page + 1 ?>" class="bluebutton">Suivant »</a>
+        <?php endif; ?>
+
+      </div>
+    <?php endif; ?>
+
   </form>
 </div>
