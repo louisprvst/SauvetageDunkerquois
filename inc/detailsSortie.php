@@ -153,7 +153,7 @@
             <?php foreach ($sortie['bateau'] as $resultat): ?>
               <tr>
                 <td style="padding-right: 1rem;">
-                    <a href="detailsSortie.php?matricule=<?= urlencode($resultat['bat']) ?>">
+                    <a href="detailsBateau.php?matricule=<?= urlencode($resultat['bat']) ?>">
                         <?= htmlspecialchars($resultat['bat'])?> 
                     </a>
                 </td>

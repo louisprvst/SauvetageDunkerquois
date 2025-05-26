@@ -42,6 +42,8 @@
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>
  
+<p style="text-align: center; margin-top: 20px;"><strong>Nombre de bateaux trouvés : <?=htmlspecialchars($total); ?></strong></p>
+
 <div style="text-align: center; margin-top: 20px;">
   <button type="submit" form="bateau" class="bluebutton">Rechercher</button>
 
