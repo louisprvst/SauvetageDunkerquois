@@ -1,10 +1,11 @@
 <?php
-    require_once __DIR__ . '/../class/rechercheBateau.php';
+  session_start();
+  require_once __DIR__ . '/../lib/retour.php';
+  enregistrerNavigation();
 
-    $matricule = $_GET['matricule'] ?? '';
-    $pers_matricule = $_GET['persmatricule'] ?? '';
-
-    $bateau = rechercheMatricule($matricule);
+  require_once __DIR__ . '/../class/rechercheBateau.php';
+  $matricule = $_GET['matricule'] ?? '';
+  $bateau = rechercheMatricule($matricule);
 ?>
 
 <!DOCTYPE html>
@@ -132,11 +133,8 @@
           </tbody>
         </table>
       <?php endif; ?>
-      
 
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="../index.php" class="bluebutton">Retour à la recherche</a>
-      </div>
+    <?php afficherBoutonRetour(); ?>
 
     </div>
 

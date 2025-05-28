@@ -1,5 +1,11 @@
 <?php
 
+  session_start();
+
+  require_once __DIR__ . '/../lib/retour.php';
+  resetNav();
+  enregistrerNavigation();
+
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['bat_search']['bat_matricule'] = $_POST['bat_matricule'] ?? '';
     $_SESSION['bat_search']['bat_nom'] = $_POST['bat_nom'] ?? '';
@@ -19,6 +25,7 @@
   // Bouton reset
   if (isset($_GET['reset']) && $_GET['reset'] == 1) {
     unset($_SESSION['bat_search']);
+    unset($_SESSION['navigation']);
     $page = 1;
   }
 
@@ -37,7 +44,7 @@
 
   $resultats = $data['resultats'];
   $total = $data['total'];
-  $total_pages = ceil($total / 25);
+  $total_pages = ceil($total / 25);  //ceil pour arrondir à l'entier superieur
 ?>
 
 <link rel="stylesheet" href="./../style/customstyle.css" media="all"/>

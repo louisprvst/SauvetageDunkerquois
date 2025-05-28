@@ -1,9 +1,10 @@
 <?php
+    session_start();
+    require_once __DIR__ . '/../lib/retour.php';
+    enregistrerNavigation();
+
     require_once __DIR__ . '/../class/rechercheSortie.php';
-
     $matricule = $_GET['matricule'] ?? '';
-    $pers_matricule = $_GET['persmatricule'] ?? '';
-
     $sortie = rechercheGeneral($matricule);
 ?>
 
@@ -170,10 +171,13 @@
           </tbody>
         </table>
       <?php endif; ?>
-      
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="detailsPersonne.php?matricule=<?= urlencode($pers_matricule)?>" class="bluebutton">Retour à la personne</a>
-      </div>
+
+    <?php afficherBoutonRetour(); 
+    
+    echo '<pre>';
+print_r($_SESSION['navigation']);
+echo '</pre>';
+?>
 
     </div>
 

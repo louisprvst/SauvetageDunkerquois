@@ -1,9 +1,11 @@
 <?php
-    require_once __DIR__ . '/../class/recherchePersonne.php';
+  session_start();
+  require_once __DIR__ . '/../lib/retour.php';;
+  enregistrerNavigation();
 
-    $matricule = $_GET['matricule'] ?? '';
-
-    $personne = rechercheParMatricule($matricule);
+  require_once __DIR__ . '/../class/recherchePersonne.php';
+  $matricule = $_GET['matricule'] ?? '';
+  $personne = rechercheParMatricule($matricule);
 ?>
 
 <!DOCTYPE html>
@@ -125,8 +127,7 @@
             }
 
             if (!empty($personne['deces']['sortie_en_mer_matricule'])) {
-              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['deces']['sortie_en_mer_matricule']) . 
-                   '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
+              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['deces']['sortie_en_mer_matricule']) . '">' . 
                    htmlspecialchars($personne['deces']['sortie_en_mer_matricule']) . '</a> </p></div>';
             }
 
@@ -144,8 +145,7 @@
               }
 
               if (!empty($deco['sort_mer_matricule'])) {
-                echo '<div><p>Sortie en mer de la decoration : <a href="detailsSortie.php?matricule=' . urlencode($deco['sort_mer_matricule']) . 
-                    '&persmatricule=' . urlencode($deco['pers_matricule']) . '">' . 
+                echo '<div><p>Sortie en mer de la decoration : <a href="detailsSortie.php?matricule=' . urlencode($deco['sort_mer_matricule']) . '">' . 
                     htmlspecialchars($deco['sort_mer_matricule']) . '</a> </p></div>';
               }
             }          
@@ -160,8 +160,7 @@
             }
 
             if (!empty($personne['etre_sauve']['sort_mer_matricule'])) {
-              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['etre_sauve']['sort_mer_matricule']) . 
-                    '&persmatricule=' . urlencode($personne['personne']['pers_matricule']) . '">' . 
+              echo '<div><p>Sortie en mer de la deco : <a href="detailsSortie.php?matricule=' . urlencode($personne['etre_sauve']['sort_mer_matricule']) . '">' . 
                     htmlspecialchars($personne['etre_sauve']['sort_mer_matricule']) . '</a> </p></div>';     
             }
         }
@@ -183,7 +182,7 @@
               <tr>
                 <td style="padding-right: 1rem;"><?= htmlspecialchars($resultat['sort_mer_date_sauvetage'] ?? 'x') ?></td>
                 <td>
-                  <a href="detailsSortie.php?matricule=<?= urlencode($resultat['sort_mer_matricule']) ?>&persmatricule=<?= urlencode($personne['personne']['pers_matricule']) ?>">
+                  <a href="detailsSortie.php?matricule=<?= urlencode($resultat['sort_mer_matricule']) ?>">
                     <?= htmlspecialchars($resultat['sort_mer_matricule']) ?>
                   </a>
                 </td>
@@ -193,13 +192,15 @@
         </table>
       <?php endif; ?>
 
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="../index.php" class="bluebutton">Retour à la recherche</a>
-      </div>
+    <?php afficherBoutonRetour(); ?>
 
     </div>
 
-  <?php include 'footer.inc.php' ; ?>
+  <?php include 'footer.inc.php' ; 
+  echo '<pre>';
+print_r($_SESSION['navigation']);
+echo '</pre>';
+  ?>
 
 </body>
 
