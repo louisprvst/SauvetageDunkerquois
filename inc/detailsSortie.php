@@ -172,12 +172,15 @@
         </table>
       <?php endif; ?>
 
-    <?php afficherBoutonRetour(); 
-    
-    echo '<pre>';
-print_r($_SESSION['navigation']);
-echo '</pre>';
-?>
+    <div style="text-align: center; margin-top: 20px;">
+        <div style="display: inline-block;">
+            <?php afficherBoutonRetour(); ?>
+        </div>
+        <div style="display: inline-block;">
+            <a href="../index.php" class="bluebutton">Accueil</a>
+        </div>
+    </div>
+
 
     </div>
 

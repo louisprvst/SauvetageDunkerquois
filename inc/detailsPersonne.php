@@ -196,11 +196,7 @@
 
     </div>
 
-  <?php include 'footer.inc.php' ; 
-  echo '<pre>';
-print_r($_SESSION['navigation']);
-echo '</pre>';
-  ?>
+  <?php include 'footer.inc.php' ; ?>
 
 </body>
 
