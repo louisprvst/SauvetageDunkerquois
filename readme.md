@@ -25,7 +25,7 @@ Base de données créée par **Monsieur Boutelier** après un léger nettoyage :
 
 3. Une fois la recherche effectuée, vous pouvez cliquer sur les identifiants afin d’obtenir plus d’informations. </br>Toutes les informations liées sont regroupées au même endroit.
 
-4. Si une autre personne, un bateau ou sortie en mer est mentionné, son identifiant est cliquable et mène à une autre fiche contenant d’autres informations.
+4. Si une autre personne, un bateau ou une sortie en mer est mentionnée, son identifiant est cliquable et mène à une autre fiche contenant d’autres informations.
 
 </br>
 

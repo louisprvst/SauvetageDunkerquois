@@ -139,7 +139,7 @@
           <?php afficherBoutonRetour(); ?>
       </div>
       <div style="display: inline-block;">
-          <a href="../index.php" class="bluebutton">Accueil</a>
+          <a href="../search.php" class="bluebutton">Accueil</a>
       </div>
     </div>
 
