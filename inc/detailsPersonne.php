@@ -55,7 +55,7 @@
 
       <h2 style="text-align: center;"> <strong> Fiche Personne <?= htmlspecialchars($personne['personne']['pers_matricule'])?> </strong> </h2>
 
-      <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
+      <p class="tips">Cliquez sur l'identifiant pour plus d'informations</p>
 
       <?php
         if ($personne) {
@@ -65,7 +65,7 @@
           }
 
             if (!empty($personne['personne']['pers_matricule'])) {
-              echo '<div><p>Matricule : ' . htmlspecialchars($personne['personne']['pers_matricule']) . '</p></div>';
+              echo '<div><p>Identifiant : ' . htmlspecialchars($personne['personne']['pers_matricule']) . '</p></div>';
             }
 
             if (!empty($personne['personne']['pers_nom'])) {
@@ -174,7 +174,7 @@
           <thead>
             <tr>
               <th style="padding-right: 1rem;">Date du sauvetage</th>
-              <th>Matricule de la sortie en mer</th>
+              <th>Identifiant de la sortie en mer</th>
             </tr>
           </thead>
           <tbody>

@@ -64,14 +64,14 @@
 
   <h2 style="text-align: center;">Recherche de Personnes</h2>
 
-  <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
+  <p class="tips">Cliquez sur l'identifiant pour plus d'informations</p>
 
   <form method="post" id="personne">
     <table style="width: 100%; margin-top: 1rem;">
       <thead>
         <tr>
           <th></th>
-          <th>Matricule</th>
+          <th>Identifiant</th>
           <th>Nom</th>
           <th>Prenom</th>
           <th>Nationalite</th>
@@ -81,7 +81,7 @@
         </tr>
         <tr>
           <td><input type="checkbox" name="sauveteurs" value="1" <?= $is_sauveteurs ? 'checked' : '' ?> title="Cochez cette case si vous ne souhaitez afficher que les sauveteurs."></td>
-          <td><input type="text" placeholder="Recherche par matricule" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
+          <td><input type="text" placeholder="Recherche par identifiant" name="pers_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
           <td><input type="text" placeholder="Recherche par nom" name="pers_nom" value="<?= htmlspecialchars($nom) ?>"></td>
           <td><input type="text" placeholder="Recherche par prenom" name="pers_prenomun" value="<?= htmlspecialchars($prenomun) ?>"></td>
           <td><input type="text" placeholder="Recherche par nationalite" name="pers_nationalite" value="<?= htmlspecialchars($nationalite) ?>"></td>

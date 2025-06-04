@@ -55,7 +55,7 @@
 
       <h2 style="text-align: center;"> <strong> Fiche Sortie en mer <?= htmlspecialchars($sortie['sortie']['sort_mer_matricule'])?> </strong> </h2>
 
-      <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
+      <p class="tips">Cliquez sur l'identifiant pour plus d'informations</p>
 
       <?php
         if ($sortie['sortie']) {

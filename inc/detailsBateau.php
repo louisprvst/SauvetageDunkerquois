@@ -53,7 +53,7 @@
 
       <h2 style="text-align: center;"> <strong> Fiche Bateau <?= htmlspecialchars($bateau['bateau']['bat_matricule'])?> </strong> </h2>
 
-      <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
+      <p class="tips">Cliquez sur l'identifiant pour plus d'informations</p>
 
       <?php
 

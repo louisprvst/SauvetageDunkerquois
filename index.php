@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="bluecase">
+            <div class="bluecasegrid">
                 <img src="./img/naufrage.png" alt="Naufrage de l'Amphitrite 4Fi98" style="width: 100%; max-height: 30em;" />
                 <p class="tips">Naufrage de l'Amphitrite 4Fi98</p>
             </div>

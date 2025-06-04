@@ -60,13 +60,13 @@
 
   <h2 style="text-align: center;">Recherche de Bateaux</h2>
 
-  <p class="tips">Cliquez sur le matricule pour plus d'informations</p>
+  <p class="tips">Cliquez sur l'identifiant pour plus d'informations</p>
 
   <form method="post" id="bateau">
     <table style="width: 100%; margin-top: 1rem;">
       <thead>
         <tr>
-          <th>Matricule</th>
+          <th>Identifiant</th>
           <th>Nom</th>
           <th>Type</th>
           <th>Pays</th>
@@ -74,7 +74,7 @@
           <th>Gabarit</th>
         </tr>
         <tr>
-          <td><input type="text" placeholder="Recherche par matricule" name="bat_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
+          <td><input type="text" placeholder="Recherche par identifiant" name="bat_matricule" value="<?= htmlspecialchars($matricule) ?>"></td>
           <td><input type="text" placeholder="Recherche par nom" name="bat_nom" value="<?= htmlspecialchars($nom) ?>"></td>
           <td><input type="text" placeholder="Recherche par type" name="bat_type" value="<?= htmlspecialchars($type) ?>"></td>
           <td><input type="text" placeholder="Recherche par pays" name="bat_pays" value="<?= htmlspecialchars($pays) ?>"></td>
