@@ -24,43 +24,43 @@
     <?php include './inc/header.inc.php' ; ?>
 
     <div id="page-content" class="bp-page-content main-section" role="main">
-        <div id="c36555" class="frame frame-size-default frame-default frame-type-header frame-layout-default frame-background-primary frame-no-backgroundimage frame-space-before-none frame-space-after-none">
-          <div class="frame-group-container">
-            <div class="frame-group-inner">
-              <div class="frame-container frame-container-default">
-                <div class="frame-inner">
-                  <header class="frame-header">
-                    <h1 class="element-header">
-                      <span>Historique des naufrages</span>
-                    </h1>
-                  </header>
-                </div>
+      <div id="c36555" class="frame frame-size-default frame-default frame-type-header frame-layout-default frame-background-primary frame-no-backgroundimage frame-space-before-none frame-space-after-none">
+        <div class="frame-group-container">
+          <div class="frame-group-inner">
+            <div class="frame-container frame-container-default">
+              <div class="frame-inner">
+                <header class="frame-header">
+                  <h1 class="element-header">
+                    <span>Historique des naufrages</span>
+                  </h1>
+                </header>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div style="display: flex; justify-content: center;">
-            <div>
-                <div class="darkbluecase">
-                    <p> Texte sur Mr Boutelier </p>
-                </div>
+      <div style="display: flex; justify-content: center;">
+        <div>
+          <div class="darkbluecase">
+            <p> Texte sur Mr Boutelier </p>
+          </div>
 
-                <div class="darkbluecase">
-                    <p>🛈 Cette base contient des données historiques. Malgré une structuration rigoureuse, </br>certaines informations sont partielles, en lien avec la complexité d’accès aux sources d’époque.</p>
-                    <p>🛈 Les informations ont été recueillies sans que les sources originales soient précisées.</br>Bien que nous ayons conservé ces données pour leur valeur historique, leur vérification reste limitée.</p>
-                </div>
-            </div>
-
-            <div class="bluecasegrid">
-                <img src="./img/naufrage.png" alt="Naufrage de l'Amphitrite 4Fi98" style="width: 100%; max-height: 30em;" />
-                <p class="tips">Naufrage de l'Amphitrite 4Fi98</p>
-            </div>
+          <div class="darkbluecase">
+            <p>🛈 Cette base contient des données historiques. Malgré une structuration rigoureuse, </br>certaines informations sont partielles, en lien avec la complexité d’accès aux sources d’époque.</p>
+            <p>🛈 Les informations ont été recueillies sans que les sources originales soient précisées.</br>Bien que nous ayons conservé ces données pour leur valeur historique, leur vérification reste limitée.</p>
+          </div>
         </div>
 
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="search.php" class="bluebutton">Accédez au module de recherche</a>
+        <div class="bluecasegrid">
+          <img src="./img/naufrage.png" alt="Naufrage de l'Amphitrite 4Fi98" style="width: 100%; max-height: 30em;" />
+          <p class="tips">Naufrage de l'Amphitrite 4Fi98</p>
         </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="search.php" class="bluebutton">Accédez au module de recherche</a>
+      </div>
     </div>
 
     <?php include './inc/footer.inc.php' ; ?>
