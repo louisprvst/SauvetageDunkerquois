@@ -58,8 +58,8 @@
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 20px;">
-        <a href="search.php" class="bluebutton">Accédez au module de recherche</a>
+      <div style="text-align: center; margin-top: 2em;">
+        <a href="search.php" class="bluebutton" style="font-size: 20px;">Accédez au module de recherche</a>
       </div>
     </div>
 
