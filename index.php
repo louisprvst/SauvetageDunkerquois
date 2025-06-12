@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>  
+
 <!DOCTYPE html>
 
 <html lang="fr-FR">
@@ -15,8 +19,6 @@
     <link rel="stylesheet" href="./style/theme-0d7f9be96d13db32849f66a9659792ed33b451f979e710ffae8742739207bfbd.css" media="all" />
     <link rel="stylesheet" href="./style/owl.carousel.min.css" media="all" />
     <link rel="stylesheet" href="./style/cmua-ea6dae8716f630adaee2fa06efcf31352aea48cd0f3fa32d400c2ae4181a788a.css" media="all"/>
-
-    <link rel="stylesheet" href="./style/customstyle.css" media="all" />
   </head>
 
   <body>
@@ -40,28 +42,33 @@
         </div>
       </div>
 
-      <div style="display: flex; justify-content: center;">
-        <div>
-          <div class="darkbluecase">
-            <p> Texte sur Mr Boutelier </p>
-          </div>
+      <?php $choix = $_SESSION['choix'] ?? null; ?>
 
-          <div class="darkbluecase">
-            <p>🛈 Cette base contient des données historiques. Malgré une structuration rigoureuse, </br>certaines informations sont partielles, en lien avec la complexité d’accès aux sources d’époque.</p>
-            <p>🛈 Les informations ont été recueillies sans que les sources originales soient précisées.</br>Bien que nous ayons conservé ces données pour leur valeur historique, leur vérification reste limitée.</p>
-          </div>
-        </div>
+      <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <form method="post" style="text-align: center;">
+          <label> 
+              <input type="radio" name="choix" value="bateau" onchange="this.form.submit()"> Effectuer une recherche sur les bateaux 
+          </label>
 
-        <div class="bluecasegrid">
-          <img src="./img/naufrage.png" alt="Naufrage de l'Amphitrite 4Fi98" style="width: 100%; max-height: 30em;" />
-          <p class="tips">Naufrage de l'Amphitrite 4Fi98</p>
-        </div>
+          <label>
+              <input type="radio" name="choix" value="personne" onchange="this.form.submit()"> Effectuer une recherche sur les personnes
+          </label>
+        </form>
       </div>
 
-      <div style="text-align: center; margin-top: 2em;">
-        <a href="search.php" class="bluebutton" style="font-size: 20px;">Accédez au module de recherche</a>
-      </div>
-    </div>
+      <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $choix = $_POST['choix'] ?? $_SESSION['choix'] ?? null;
+          $_SESSION['choix'] = $choix;
+        }
+        
+        if($_SESSION['choix'] === 'bateau') {
+          include './inc/rechercheBateau.php';
+        } 
+        else{
+          include './inc/recherchePersonne.php';
+        }
+      ?>
 
     <?php include './inc/footer.inc.php' ; ?>
 
