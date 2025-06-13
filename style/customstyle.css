@@ -38,3 +38,18 @@
 .darkbluecase p {
     margin: 0;
 }
+
+@media (max-width: 768px) {
+  .bluecase {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .search {
+    overflow-x:auto;
+  }
+
+  body{
+    overflow-x: hidden;
+  }
+}

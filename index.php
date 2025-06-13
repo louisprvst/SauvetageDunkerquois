@@ -44,7 +44,7 @@
 
       <?php $choix = $_SESSION['choix'] ?? null; ?>
 
-      <div style="background-color: #bbc0f0; border-radius: 16px; padding: 2rem; margin: 2rem auto; display: table; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div class="bluecase">
         <form method="post" style="text-align: center;">
           <label> 
               <input type="radio" name="choix" value="bateau" onchange="this.form.submit()"> Effectuer une recherche sur les bateaux 
@@ -56,19 +56,21 @@
         </form>
       </div>
 
-      <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          $choix = $_POST['choix'] ?? $_SESSION['choix'] ?? null;
-          $_SESSION['choix'] = $choix;
-        }
-        
-        if($_SESSION['choix'] === 'bateau') {
-          include './inc/rechercheBateau.php';
-        } 
-        else{
-          include './inc/recherchePersonne.php';
-        }
-      ?>
+      <div class="search">
+        <?php
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $choix = $_POST['choix'] ?? $_SESSION['choix'] ?? null;
+            $_SESSION['choix'] = $choix;
+          }
+          
+          if($_SESSION['choix'] === 'bateau') {
+            include './inc/rechercheBateau.php';
+          } 
+          else{
+            include './inc/recherchePersonne.php';
+          }
+        ?>
+      </div>
 
     <?php include './inc/footer.inc.php' ; ?>
 
