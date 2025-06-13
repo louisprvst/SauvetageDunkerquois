@@ -937,20 +937,30 @@
             <li class="breadcrumb-item">
               <a
                 class="breadcrumb-link"
-                href="https://archives-dunkerque.fr/decouvrir"
-                title="Découvrir"
+                href="https://archives-dunkerque.fr/chercher"
+                title="Chercher"
                 ><span class="breadcrumb-link-title"
-                  ><span class="breadcrumb-text">Découvrir</span></span
+                  ><span class="breadcrumb-text">Chercher</span></span
                 ></a
               >
             </li>
             <li class="breadcrumb-item">
               <a
                 class="breadcrumb-link"
-                href="https://archives-dunkerque.fr/decouvrir/histoires-dici"
-                title="Histoires d&#39;ici"
+                href="https://archives-dunkerque.fr/chercher/aide-a-la-recherche"
+                title="Aide a la recherche"
                 ><span class="breadcrumb-link-title"
-                  ><span class="breadcrumb-text">Histoires d'ici</span></span
+                  ><span class="breadcrumb-text">Aide a la recherche</span></span
+                ></a
+              >
+            </li>
+            <li class="breadcrumb-item">
+              <a
+                class="breadcrumb-link"
+                href="https://archives-dunkerque.fr/"
+                title="Un sauvetage en mer"
+                ><span class="breadcrumb-link-title"
+                  ><span class="breadcrumb-text">Un sauvetage en mer</span></span
                 ></a
               >
             </li>
